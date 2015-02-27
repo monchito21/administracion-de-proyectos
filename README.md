@@ -86,4 +86,4 @@ Pruebas y corrección de código: 5 días hábiles
 
 El costo del proyecto será de 500 mil pesos m.n. en un tiempo total de 9 meses con 3 empleados. 
 
-https://github.com/monchito21/administracion-de-proyectos/
+https://github.com/monchito21/administracion-de-proyectos
