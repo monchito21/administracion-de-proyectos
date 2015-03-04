@@ -1,0 +1,7 @@
+Contexto: Industria textil
+
+Entidades:
+
+Cliente IdCliente (int) Contraseña (varchar) Datos (nombre,apellidos,dirección,correo) (varchar)
+
+Pedido FolioPedido(int) Cantidad(int) PrecioxProducto(double) PrecioTotal (double) IdProducto(int)
