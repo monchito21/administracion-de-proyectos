@@ -6,6 +6,17 @@ Cliente IdCliente (int) Contraseña (varchar) Datos (nombre,apellidos,dirección
 
 Pedido FolioPedido(int) Cantidad(int) PrecioxProducto(double) PrecioTotal (double) IdProducto(int)
 
+Compra
+FolioInventario(int)
+FolioPedido(int)
+IdCliente(int)
+
+Producto
+-Tipo (Playeras, Polo, Sudaderas, Gorras, Parches)(varchar)
+Precio(double)
+IdProducto(int)
+Cantidad(int)
+
 Empleado
 IdEmpleado(int)
 Contraseña(varchar)
