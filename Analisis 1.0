@@ -32,3 +32,20 @@ Almacén
 IdSuministro(int)
 Cantidad(int)
 
+Entidades:
+
+Nombre de atributo	Descripción del atributo	                  Tipo de atributo	        Ejemplo
+Entidad: Producto
+idProducto	        Identificador único del producto	          Entero	                  129092
+precio	            Precio normal del producto	                Real	                    69.99
+Tipo	              Describe el producto que se va a vender	    Cadena de caracteres	    Polo
+
+
+
+Relaciones:
+
+Nombre de atributos	        Tipo de atributos	                Descripción	              Tipo de relación:1 cliente a 1 pedido
+Relación: Compra
+folioInventario	            Identificador de la compra	      Es el numero único de la compra 	              
+folioPedido	                Asociativo	                      Es la clave primaria de la entidad Pedido	
+Fecha de IdCliente	        Asociativo	                      Es el identificador único del cliente que realiza la compra	
