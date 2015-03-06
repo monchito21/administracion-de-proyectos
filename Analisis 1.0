@@ -64,6 +64,10 @@ idProducto	        Identificador único del producto	          Entero	          
 precio	            Precio normal del producto	                Real	                    69.99
 Tipo	              Describe el producto que se va a vender	    Cadena de caracteres	    Polo
 
+Entidad: Almacén
+idSuministro	Identificador único del suministro alojado en el almacén	   Entero	               6721893
+Suministro	  Descripción del suministro	                            Cadena de caracteres       Hilo azul rey
+Cantidad	    Cantidad existente de este suministro	                       Entero	               400
 
 
 Relaciones:
