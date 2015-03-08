@@ -1,15 +1,24 @@
-Contexto: Industria textil
+Contexto: Industria textil 
 
 Entidades:
 
-Cliente IdCliente (int) Contraseña (varchar) Datos (nombre,apellidos,dirección,correo) (varchar)
+Cliente
+IdCliente (int)
+Contraseña (varchar)
+Datos (nombre,apellidos,dirección,correo) (varchar)
 
-Pedido FolioPedido(int) Cantidad(int) PrecioxProducto(double) PrecioTotal (double) IdProducto(int)
+Pedido
+FolioPedido(int)
+Cantidad(int)
+PrecioxProducto(double)
+PrecioTotal (double)
+IdPedido(int)
 
 Compra
 FolioInventario(int)
 FolioPedido(int)
 IdCliente(int)
+Estado(varchar)
 
 Producto
 -Tipo (Playeras, Polo, Sudaderas, Gorras, Parches)(varchar)
@@ -31,6 +40,7 @@ Almacén
 -Suministro (Hilo, Tela, Tijeras, Aguja)(varchar)
 IdSuministro(int)
 Cantidad(int)
+
 
 Entidades:
 
