@@ -78,4 +78,5 @@ folioInventario	            Identificador de la compra	      Es el numero único
 folioPedido	                Asociativo	                      Es la clave primaria de la entidad Pedido	
 Fecha de IdCliente	        Asociativo	                      Es el identificador único del cliente que realiza la compra	
 
-
+El modelo entidad relación es la conclusión del análisis de la base de datos, la cual anexamos a continuación:
+https://cloud.githubusercontent.com/assets/5665001/6544172/1552fdaa-c508-11e4-9a86-4923dba856f3.jpeg
