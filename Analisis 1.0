@@ -1,0 +1,98 @@
+Contexto: Industria textil 
+
+Entidades:
+
+Cliente
+IdCliente (int)
+Contraseña (varchar)
+Datos (nombre,apellidos,dirección,correo) (varchar)
+
+Pedido
+FolioPedido(int)
+Cantidad(int)
+PrecioxProducto(double)
+PrecioTotal (double)
+IdPedido(int)
+
+Compra
+FolioInventario(int)
+FolioPedido(int)
+IdCliente(int)
+Estado(varchar)
+
+Producto
+-Tipo (Playeras, Polo, Sudaderas, Gorras, Parches)(varchar)
+Precio(double)
+IdProducto(int)
+Cantidad(int)
+
+Empleado
+IdEmpleado(int)
+Contraseña(varchar)
+Datos(nombre,apellidos,dirección,correo)(varchar)
+Puesto:
+-Gerente
+-Vendedor
+-Bordador
+-Serigrafia
+
+Almacén
+-Suministro (Hilo, Tela, Tijeras, Aguja)(varchar)
+IdSuministro(int)
+Cantidad(int)
+
+
+Entidades:
+
+Nombre de atributo    Descripción del atributo                      Tipo de atributo             Ejemplo
+Entidad: Persona
+nombre	             Nombre de pila del cliente	                                  Cadena de Caracteres	      Pancho
+apellidos	           Apellidos del cliente	                                      Cadena de caracteres	      Acosta Casas
+Dirección	           Dirección del cliente	                                      Cadena larga de caracteres 	Pipila 102, Centro
+Correo	             Correo electrónico del cliente para comunicarse con persona	Cadena de caracteres	      panchoac@ejem.com
+
+Sub Entidad de Persona: Cliente
+idCliente	           Identificador único del cliente	       Entero	                2290
+Contraseña	         Palabra clave para ingresar al sistema	 Cadena de caracteres	  Passejem
+
+Sub Entidad de Persona: Empleado
+idEmpleado	        Identificador único del empleado	       Tipo enteros	3         900
+
+Entidad: Pedido
+folioPedido	       Numero único del pedido 	                                              Entero	     70020010
+Cantidad	         Define la cantidad que el cliente quiere de un producto en su pedido	  Entero	     100
+precioxProducto	   Valor del producto individual	                                        Real 	       70.99
+precioTotal	       Resultado del precio x producto por la cantidad del pedido	            Real	       709.90
+idPedido	         Identificador único del pedido	Tipo                                    Entero	     889318
+
+
+
+
+Nombre de atributo	Descripción del atributo	                  Tipo de atributo	        Ejemplo
+Entidad: Producto
+idProducto	        Identificador único del producto	          Entero	                  129092
+precio	            Precio normal del producto	                Real	                    69.99
+Tipo	              Describe el producto que se va a vender	    Cadena de caracteres	    Polo
+
+Entidad: Almacén
+idSuministro	Identificador único del suministro alojado en el almacén	   Entero	               6721893
+Suministro	  Descripción del suministro	                            Cadena de caracteres       Hilo azul rey
+Cantidad	    Cantidad existente de este suministro	                       Entero	               400
+
+
+Relaciones:
+
+Nombre de atributos	        Tipo de atributos	                Descripción	              Tipo de relación:1 cliente a 1 pedido
+Relación: Compra
+folioInventario	            Identificador de la compra	      Es el numero único de la compra 	              
+folioPedido	                Asociativo	                      Es la clave primaria de la entidad Pedido	
+Fecha de IdCliente	        Asociativo	                      Es el identificador único del cliente que realiza la compra	
+
+
+Relación: Guarda
+idInventario            	Identificador de la compra	          Es el numero único de la compra 	   1 cliente a muchos pedidos.
+idEmpleado	              Identificador único del empleado	    Tipo enteros	                       3900
+
+
+El modelo entidad relación es la conclusión del análisis de la base de datos, la cual anexamos a continuación:
+https://cloud.githubusercontent.com/assets/5665001/6544172/1552fdaa-c508-11e4-9a86-4923dba856f3.jpeg
