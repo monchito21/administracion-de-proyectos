@@ -39,3 +39,29 @@ Almacen
 idInventario(PK)	Suministro	Cantidad	idEmpleado(FK)
 Compra	
 folioPedido	idCliente	Estado
+
+
+3 Forma Normal // los atributos no dependen de otros atributos aparte del campo llave
+
+Persona
+Id(PK)	Nombre	ApellidoPaterno	ApellidoMaterno	Calle	No.	Colonia	Correo
+TeléfonoPersona 
+Id(FK)	telefono
+Cliente
+Id(FK)	contraseña
+Empleado
+Id(FK)	Contraseña
+Pedido
+Folio(PK)	Cantidad	precioXproducto	precioTotal	idProducto(FK)
+Producto
+idProducto(PK)	Precio	Tipo(FK)
+TipoProducto
+idTipo(PK)	Tipo
+Almacen	
+idInventario(PK)	Suministro(FK)	Cantidad	idEmpleado(FK)
+Suministro
+IdSuministro(PK)	Suministro
+Compra	
+folioPedido	idCliente	Estado(FK)
+EstadoCompra
+IdEstado(PK)	Estado
