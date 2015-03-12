@@ -1,0 +1,23 @@
+1Forma Normal 
+//todos los atributos se hacen atómicos y se aplica cardinalidad
+
+Persona
+Id(PK)|	Nombre|	ApellidoPaterno	|ApellidoMaterno|	Calle|	No.|	Colonia|	Correo|	telefono
+
+Cliente
+Id(FK)|	contraseña
+Empleado
+Id(FK)|	Contraseña
+
+Pedido
+Folio(PK)|	Cantidad|	precioXproducto|	precioTotal|	idProducto(FK)
+
+Producto
+idProducto(PK)|	Precio|	Tipo|	idEmpleado(FK)
+
+Almacen
+idInventario(PK)|	Suministro|	Cantidad|	idEmpleado(FK)
+
+Compra	
+idCompra|	folioPedido|	idCliente|	Estado
+
