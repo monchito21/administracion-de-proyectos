@@ -1,161 +1,158 @@
 -- -----------------------------------------------------
 -- Table `mydb`.`Persona`
 -- -----------------------------------------------------
-CREATE TABLE `Persona` (
-  `IdPersona` INT NOT NULL,
-  `NomPersona` VARCHAR(45) NULL,
-  `APpersona` VARCHAR(45) NULL,
-  `AMpersona` VARCHAR(45) NULL,
-  `Calle` VARCHAR(45) NULL,
-  `Numero` VARCHAR(45) NULL,
-  `Colonia` VARCHAR(45) NULL,
-  `Correo` VARCHAR(45) NULL,
-  PRIMARY KEY (`IdPersona`))
+CREATE TABLE Persona (
+  IdPersona INT NOT NULL,
+  NomPersona VARCHAR(45) NULL,
+  APpersona VARCHAR(45) NULL,
+  AMpersona VARCHAR(45) NULL,
+  Calle VARCHAR(45) NULL,
+  Numero VARCHAR(45) NULL,
+  Colonia VARCHAR(45) NULL,
+  Correo VARCHAR(45) NULL,
+  PRIMARY KEY (IdPersona))
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`TelefonoPersona`
 -- -----------------------------------------------------
-CREATE TABLE  `TelefonoPersona` (
-  `Telefono` VARCHAR(45) NOT NULL,
-  `Persona_IdPersona` INT NOT NULL,
-  PRIMARY KEY (`Persona_IdPersona`),
-  CONSTRAINT `fk_TelefonoPersona_Persona1`
-    FOREIGN KEY (`Persona_IdPersona`)
-    REFERENCES `mydb`.`Persona` (`IdPersona`)
+CREATE TABLE  TelefonoPersona (
+  Telefono VARCHAR(45) NOT NULL,
+  Persona_IdPersona INT NOT NULL,
+  PRIMARY KEY (Persona_IdPersona),
+    FOREIGN KEY (Persona_IdPersona)
+    REFERENCES Persona (IdPersona)
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Cliente`
 -- -----------------------------------------------------
-CREATE TABLE `Cliente` (
-  `PassCliente` VARCHAR(45) NULL,
-  `Persona_IdPersona` INT NOT NULL,
-  PRIMARY KEY (`Persona_IdPersona`),
-    FOREIGN KEY (`Persona_IdPersona`)
-    REFERENCES `mydb`.`Persona` (`IdPersona`)
+CREATE TABLE Cliente (
+  PassCliente VARCHAR(45) NULL,
+  Persona_IdPersona INT NOT NULL,
+  PRIMARY KEY (Persona_IdPersona),
+    FOREIGN KEY (Persona_IdPersona)
+    REFERENCES Persona (IdPersona)
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Empleado`
 -- -----------------------------------------------------
-CREATE TABLE `Empleado` (
-  `PassEmpleado` INT NOT NULL,
-  `Persona_IdPersona` INT NOT NULL,
-  PRIMARY KEY (`Persona_IdPersona`),
-  CONSTRAINT `fk_Empleado_Persona`
-    FOREIGN KEY (`Persona_IdPersona`)
-    REFERENCES `mydb`.`Persona` (`IdPersona`)
+CREATE TABLE Empleado (
+  PassEmpleado INT NOT NULL,
+  Persona_IdPersona INT NOT NULL,
+  PRIMARY KEY (Persona_IdPersona),
+  CONSTRAINT fk_Empleado_Persona
+    FOREIGN KEY (Persona_IdPersona)
+    REFERENCES Persona (IdPersona))
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`TipoProducto`
 -- -----------------------------------------------------
-CREATE TABLE `TipoProducto` (
-  `IdTipo` INT NOT NULL,
-  `tipo` VARCHAR(45) NULL,
-  PRIMARY KEY (`IdTipo`))
+CREATE TABLE TipoProducto (
+  IdTipo INT NOT NULL,
+  tipo VARCHAR(45) NULL,
+  PRIMARY KEY (IdTipo))
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Producto`
 -- -----------------------------------------------------
-CREATE TABLE `Producto` (
-  `IdProducto` INT NOT NULL,
-  `Precio` VARCHAR(45) NULL,
-  `TipoProducto_IdTipo` INT NOT NULL,
-  PRIMARY KEY (`IdProducto`, `TipoProducto_IdTipo`),
-  CONSTRAINT `fk_Producto_TipoProducto1`
-    FOREIGN KEY (`TipoProducto_IdTipo`)
-    REFERENCES `mydb`.`TipoProducto` (`IdTipo`)
+CREATE TABLE Producto (
+  IdProducto INT NOT NULL,
+  Precio VARCHAR(45) NULL,
+  TipoProducto_IdTipo INT NOT NULL,
+  PRIMARY KEY (IdProducto, TipoProducto_IdTipo),
+    FOREIGN KEY (TipoProducto_IdTipo)
+    REFERENCES  TipoProducto (IdTipo))
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Pedido`
 -- -----------------------------------------------------
-CREATE TABLE `Pedido` (
-  `Folio` INT NOT NULL,
-  `Cantidad` VARCHAR(45) NULL,
-  `PrecioxProducto` VARCHAR(45) NULL,
-  `Pedidocol` VARCHAR(45) NULL,
-  `PrecioTotal` VARCHAR(45) NULL,
-  `Producto_IdProducto` INT NOT NULL,
-  PRIMARY KEY (`Folio`, `Producto_IdProducto`),
-  CONSTRAINT `fk_Pedido_Producto1`
-    FOREIGN KEY (`Producto_IdProducto`)
-    REFERENCES `mydb`.`Producto` (`IdProducto`)
+CREATE TABLE Pedido (
+  Folio INT NOT NULL,
+  Cantidad VARCHAR(45) NULL,
+  PrecioxProducto VARCHAR(45) NULL,
+  Pedidocol VARCHAR(45) NULL,
+  PrecioTotal VARCHAR(45) NULL,
+  TipoProducto_IdTipo INT NOT NULL,
+  Producto_IdProducto INT NOT NULL,
+  PRIMARY KEY (Folio, Producto_IdProducto),
+  CONSTRAINT fk_Pedido_Producto1
+       FOREIGN KEY (Producto_IdProducto, TipoProducto_IdTipo)
+    REFERENCES Producto (IdProducto, TipoProducto_IdTipo)
+
+    )
 ;
-
-
 -- -----------------------------------------------------
 -- Table `mydb`.`Suministro`
 -- -----------------------------------------------------
-CREATE TABLE `Suministro` (
-  `IdSuministro` INT NOT NULL,
-  `NomSuministro` VARCHAR(45) NULL,
-  PRIMARY KEY (`IdSuministro`))
+CREATE TABLE Suministro (
+  IdSuministro INT NOT NULL,
+  NomSuministro VARCHAR(45) NULL,
+  PRIMARY KEY (IdSuministro))
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Almacen`
 -- -----------------------------------------------------
-CREATE TABLE `Almacen` (
-  `IdInventario` INT NOT NULL,
-  `Cantidad` VARCHAR(45) NULL,
-  `Empleado_Persona_IdPersona` INT NOT NULL,
-  `Suministro_IdSuministro` INT NOT NULL,
-  PRIMARY KEY (`IdInventario`, `Empleado_Persona_IdPersona`, `Suministro_IdSuministro`),
-  CONSTRAINT `fk_Almacen_Empleado1`
-    FOREIGN KEY (`Empleado_Persona_IdPersona`)
-    REFERENCES `mydb`.`Empleado` (`Persona_IdPersona`)
+CREATE TABLE Almacen (
+  IdInventario INT NOT NULL,
+  Cantidad VARCHAR(45) NULL,
+  Empleado_Persona_IdPersona INT NOT NULL,
+  Suministro_IdSuministro INT NOT NULL,
+  PRIMARY KEY (IdInventario, Empleado_Persona_IdPersona, Suministro_IdSuministro),
+  CONSTRAINT fk_Almacen_Empleado1
+    FOREIGN KEY (Empleado_Persona_IdPersona)
+    REFERENCES Empleado(Persona_IdPersona)
     ,
-  CONSTRAINT `fk_Almacen_Suministro1`
-    FOREIGN KEY (`Suministro_IdSuministro`)
-    REFERENCES `mydb`.`Suministro` (`IdSuministro`)
-    
+  CONSTRAINT fk_Almacen_Suministro1
+    FOREIGN KEY (Suministro_IdSuministro)
+    REFERENCES Suministro (IdSuministro)
+    )
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`EdoCompra`
 -- -----------------------------------------------------
-CREATE TABLE `EdoCompra` (
-  `IdEstado` INT NOT NULL,
-  `Estado` VARCHAR(45) NULL,
-  PRIMARY KEY (`IdEstado`))
+CREATE TABLE EdoCompra (
+  IdEstado INT NOT NULL,
+  Estado VARCHAR(45) NULL,
+  PRIMARY KEY (IdEstado))
 ;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Compra`
 -- -----------------------------------------------------
-CREATE TABLE `Compra` (
-  `FolioPedido` INT NOT NULL,
-  `Cliente_Persona_IdPersona` INT NOT NULL,
-  `EdoCompra_IdEstado` INT NOT NULL,
-  `Pedido_Folio` INT NOT NULL,
-  PRIMARY KEY (`FolioPedido`, `Cliente_Persona_IdPersona`, `EdoCompra_IdEstado`, `Pedido_Folio`),
-  CONSTRAINT `fk_Compra_Cliente1`
-    FOREIGN KEY (`Cliente_Persona_IdPersona`)
-    REFERENCES `mydb`.`Cliente` (`Persona_IdPersona`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Compra_EdoCompra1`
-    FOREIGN KEY (`EdoCompra_IdEstado`)
-    REFERENCES `mydb`.`EdoCompra` (`IdEstado`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Compra_Pedido1`
-    FOREIGN KEY (`Pedido_Folio`)
-    REFERENCES `mydb`.`Pedido` (`Folio`)
+CREATE TABLE Compra (
+  FolioPedido INT NOT NULL,
+  Cliente_Persona_IdPersona INT NOT NULL,
+  EdoCompra_IdEstado INT NOT NULL,
+  Pedido_Folio INT NOT NULL,
+  Producto_IdProducto INT NOT NULL,
+  PRIMARY KEY (FolioPedido, Cliente_Persona_IdPersona, EdoCompra_IdEstado, Pedido_Folio),
+  CONSTRAINT fk_Compra_Cliente1
+    FOREIGN KEY (Cliente_Persona_IdPersona)
+    REFERENCES Cliente (Persona_IdPersona),
     
+  CONSTRAINT fk_Compra_EdoCompra1
+    FOREIGN KEY (EdoCompra_IdEstado)
+    REFERENCES EdoCompra (IdEstado),
+  CONSTRAINT fk_Compra_Pedido1
+    FOREIGN KEY (Pedido_Folio, Producto_IdProducto)
+    REFERENCES Pedido (Folio, Producto_IdProducto)
+    )
 ;
 
 
