@@ -26,6 +26,9 @@ public final class interfaz extends javax.swing.JFrame {
         c = new javax.swing.JRadioButton();
         e = new javax.swing.JRadioButton();
         b = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        nom = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         registra = new javax.swing.JMenuItem();
@@ -33,6 +36,7 @@ public final class interfaz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        i.setToolTipText("ID");
         i.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iActionPerformed(evt);
@@ -50,6 +54,10 @@ public final class interfaz extends javax.swing.JFrame {
         });
 
         b.setText("Buscar");
+
+        jLabel2.setText("ID de Usuario");
+
+        jLabel1.setText("Nombre");
 
         jMenu2.setText("Clientes");
 
@@ -74,21 +82,29 @@ public final class interfaz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(b)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(nombre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(c)
-                        .addGap(18, 18, 18)
-                        .addComponent(e)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                        .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(c)
+                                .addGap(18, 18, 18)
+                                .addComponent(e)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(280, 280, 280))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +113,16 @@ public final class interfaz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombre)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(b)
                         .addComponent(c)
-                        .addComponent(e)))
-                .addContainerGap(249, Short.MAX_VALUE))
+                        .addComponent(e)
+                        .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,8 +174,11 @@ public final class interfaz extends javax.swing.JFrame {
     private javax.swing.JRadioButton e;
     private javax.swing.JMenuItem elimina;
     private javax.swing.JTextField i;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JTextField nom;
     private javax.swing.JLabel nombre;
     private javax.swing.JMenuItem registra;
     // End of variables declaration//GEN-END:variables
@@ -163,7 +187,7 @@ public void eventos(){
      @Override
      public void actionPerformed(ActionEvent e){
          if(i.getText().matches("[0-9]*")){
-             int a = Integer.parseInt(i.getText());
+             int a = Integer.parseInt(i.getText());             
          if(c.isSelected()==true){
                  try {
                      sql.C02(a);

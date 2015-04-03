@@ -48,34 +48,34 @@ public void C01(int A1, int A2,JFrame frame) throws SQLException{
     }
 }
 public void C02(int m) throws SQLException{        
-    String consulta="select * from SCRUM.CLIENTE where PERSONA_IDPERSONA="+m;
-    
+    String consulta="select * from SCRUM.PERSONA where IDPERSONA="+m;   
+    String consulta2="select PERSONA_IDPERSONA from SCRUM.CLIENTE where PERSONA_IDPERSONA="+m;
     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
     Statement statement = connection.createStatement();
-    ResultSet rset = statement.executeQuery(consulta);
-    if(rset.next()==true){
-        String consulta2="select * from SCRUM.CLIENTE, SCRUM.PERSONA where PASSCLIENTE="+rset.getString("PASSCLIENTE");        
-        rset = statement.executeQuery(consulta2);        
+    ResultSet rset = statement.executeQuery(consulta);                
         //ventana
         if(rset.next()==true){
         JFrame j = new JFrame();
         j.setTitle("Cliente");
         j.setSize(320,400);
         j.setLocation(600,100);
-        j.setVisible(true);
+        
         j.setResizable(false);
         j.setLayout(new GridLayout(5,1));
         //consulta de datos        
-        String n =rset.getString("NOMPERSONA");
+        String nom =rset.getString("NOMPERSONA");
         String ap =rset.getString("APPERSONA");
         String am =rset.getString("AMPERSONA");
         String ca =rset.getString("CALLE");
         String num =rset.getString("NUMERO");
         String col =rset.getString("COLONIA");
         String mail =rset.getString("CORREO");
-        String id =rset.getString("PERSONA_IDPERSONA");
+        String id =rset.getString("IDPERSONA");        
+        ResultSet rset2 = statement.executeQuery(consulta2);
+        if(rset2.next()==true){
         //datos en la ventana
-        JLabel n1 = new JLabel("Nombre: "+n+" "+ap+" "+am+" ");
+        
+        JLabel n1 = new JLabel("Nombre: "+nom+" "+ap+" "+am+" ");
         JLabel ca1 = new JLabel("Calle: "+ca+" #"+num);
         JLabel col1 = new JLabel("Colonia: "+col);
         JLabel email = new JLabel("E-mail: "+mail);
@@ -84,12 +84,18 @@ public void C02(int m) throws SQLException{
         j.add(ca1);
         j.add(col1);
         j.add(email);
-        j.add(id1);
+        j.add(id1);        
+        j.setVisible(true);
         }
-    }
+        
     else{
+        JOptionPane.showMessageDialog(null,"El usuario no existe","ERROR",JOptionPane.QUESTION_MESSAGE);
+    }
+        }
+        else{
         JOptionPane.showMessageDialog(null,"El usuario no existe","ERROR",JOptionPane.QUESTION_MESSAGE);
     }
 }
 }
+
 
