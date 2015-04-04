@@ -205,5 +205,14 @@ public void eventos(){
          }
      }
  });
+ 
+ //Registra clientes
+ 
+ registra.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed(ActionEvent e){
+         
+     }
+ });
 }
 }
