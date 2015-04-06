@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public final class interfaz extends javax.swing.JFrame {
     private final SQL sql = new SQL();
@@ -27,8 +28,6 @@ public final class interfaz extends javax.swing.JFrame {
         e = new javax.swing.JRadioButton();
         b = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        nom = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         registra = new javax.swing.JMenuItem();
@@ -57,8 +56,6 @@ public final class interfaz extends javax.swing.JFrame {
 
         jLabel2.setText("ID de Usuario");
 
-        jLabel1.setText("Nombre");
-
         jMenu2.setText("Clientes");
 
         registra.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
@@ -82,29 +79,22 @@ public final class interfaz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(b)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombre)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(c)
-                                .addGap(18, 18, 18)
-                                .addComponent(e)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(280, 280, 280))))
+                        .addGap(12, 12, 12)
+                        .addComponent(c)
+                        .addGap(26, 26, 26)
+                        .addComponent(e)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,14 +105,10 @@ public final class interfaz extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(b)
                         .addComponent(c)
-                        .addComponent(e)
                         .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(279, Short.MAX_VALUE))
+                        .addComponent(e)
+                        .addComponent(jLabel2)))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,11 +160,9 @@ public final class interfaz extends javax.swing.JFrame {
     private javax.swing.JRadioButton e;
     private javax.swing.JMenuItem elimina;
     private javax.swing.JTextField i;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField nom;
     private javax.swing.JLabel nombre;
     private javax.swing.JMenuItem registra;
     // End of variables declaration//GEN-END:variables
@@ -186,6 +170,7 @@ public void eventos(){
  b.addActionListener(new ActionListener(){
      @Override
      public void actionPerformed(ActionEvent e){
+         if(!"".equals(i.getText())){
          if(i.getText().matches("[0-9]*")){
              int a = Integer.parseInt(i.getText());             
          if(c.isSelected()==true){
@@ -195,15 +180,16 @@ public void eventos(){
                      Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
                  }
          }
-         else{
-             /*
-             
-             en construccion
-             
-             */
          }
+         
+         else{
+             JOptionPane.showMessageDialog(null,"El ID debe ser un numero","Error al buscar",JOptionPane.WARNING_MESSAGE);
          }
      }
+            else{
+             JOptionPane.showMessageDialog(null,"No ha ingresado datos");
+ }
+     }  
  });
  
  //Registra clientes
@@ -211,7 +197,8 @@ public void eventos(){
  registra.addActionListener(new ActionListener(){
      @Override
      public void actionPerformed(ActionEvent e){
-         
+         C03 r = new C03();
+         r.setVisible(true);
      }
  });
 }

@@ -1,6 +1,7 @@
 package paqueteC0;
 
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class SQL {
+    
     public SQL(){
     }
 public  Statement conn() {
@@ -21,10 +23,12 @@ public  Statement conn() {
     
     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
-    JOptionPane.showMessageDialog(null, "Conexion BD exitosa");
+    //JOptionPane.showMessageDialog(null, "Conexion BD exitosa");
     return statement;
     }
-    catch(Exception e){      
+    catch(SQLException | HeadlessException e){      
+        JOptionPane.showMessageDialog(null,"Ocurrio un error al conectar con la base de datos","Error",JOptionPane.WARNING_MESSAGE);
+        System.exit(0);
         return null;
  }
 }
@@ -89,13 +93,45 @@ public void C02(int m) throws SQLException{
         }
         
     else{
-        JOptionPane.showMessageDialog(null,"El usuario no existe","ERROR",JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"El usuario no existe ","ERROR",JOptionPane.QUESTION_MESSAGE);
     }
         }
         else{
-        JOptionPane.showMessageDialog(null,"El usuario no existe","ERROR",JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"El usuario no existe ","ERROR",JOptionPane.QUESTION_MESSAGE);
+    }
+}
+public void consulta(int id) throws SQLException{
+    String c ="select * from SCRUM.PERSONA where IDPERSONA="+id;
+    
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(c);
+    if(rset.next()==true){
+    JOptionPane.showMessageDialog(null,"El id de usuario ya esta ocupado","Error",JOptionPane.QUESTION_MESSAGE);        
+    }
+    else{
+        JOptionPane.showMessageDialog(null,"El usuario es valido");        
+    }
+}
+public void C03(JFrame f,String nom,int ID,String aP,
+        String aM,String calle,
+        String col,int n,String mail, String pass) throws SQLException{   
+    String c ="select * from SCRUM.PERSONA where IDPERSONA="+ID;
+    String inP = "INSERT INTO SCRUM.PERSONA (IDPERSONA,NOMPERSONA,APPERSONA,AMPERSONA,CALLE,"
+            + "NUMERO, COLONIA,CORREO ) VALUES ('"+ID+"','"+nom+"','"+aP+"','"+aM+"','"+calle+
+            "','"+n+"','"+col+"','"+mail+"')";
+    String inC = "INSERT INTO SCRUM.CLIENTE (PERSONA_IDPERSONA,PASSCLIENTE) VALUES ('"+ID+"','"+pass+"')";
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(c);
+    if(rset.next()==true){
+    JOptionPane.showMessageDialog(null,"El id de usuario ya esta ocupado","Error",JOptionPane.QUESTION_MESSAGE);        
+    }
+    else{
+        JOptionPane.showMessageDialog(null,"Datos guardados");                
+    statement.executeUpdate(inP);
+    statement.executeUpdate(inC);
+    f.dispose();
     }
 }
 }
-
-
