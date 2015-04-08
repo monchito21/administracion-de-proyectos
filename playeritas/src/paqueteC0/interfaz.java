@@ -201,5 +201,22 @@ public void eventos(){
          r.setVisible(true);
      }
  });
+ elimina.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed(ActionEvent e){
+         String n = JOptionPane.showInputDialog("Ingrese el iD de usuario a eliminar");
+         if(n.matches("[0-9]*")){
+             int id = Integer.parseInt(n);
+             try {
+                 sql.C04(id);
+             } catch (SQLException ex) {
+                 Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+         else{
+             JOptionPane.showMessageDialog(null,"No ha ingresado un valor numerico");
+         }
+     }
+ });
 }
 }

@@ -287,7 +287,6 @@ public class C03 extends javax.swing.JFrame {
         si.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e1){
-                boolean a=false;
                 try {                                        
                     sql.C03(frame,n,idP,ap,am,c,co,num,m, pas);
                     j.dispose();
