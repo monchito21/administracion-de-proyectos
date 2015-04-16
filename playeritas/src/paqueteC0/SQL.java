@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class SQL {
     
@@ -122,7 +123,9 @@ public void consulta(int id) throws SQLException{
 }
 public void C03(JFrame f,String nom,int ID,String aP,
         String aM,String calle,
-        String col,int n,String mail, String pass) throws SQLException{   
+        String col,int n,String mail, String pass,JTextField nombre,JTextField aPaterno
+        ,JTextField aMaterno,JTextField cal,JTextField colo,
+        JTextField numero,JTextField id,JTextField email,JTextField con) throws SQLException{   
     String c ="select * from SCRUM.PERSONA where IDPERSONA="+ID;
     String inP = "INSERT INTO SCRUM.PERSONA (IDPERSONA,NOMPERSONA,APPERSONA,AMPERSONA,CALLE,"
             + "NUMERO, COLONIA,CORREO ) VALUES ('"+ID+"','"+nom+"','"+aP+"','"+aM+"','"+calle+
@@ -133,6 +136,15 @@ public void C03(JFrame f,String nom,int ID,String aP,
     ResultSet rset = statement.executeQuery(c);
     if(rset.next()==true){
     JOptionPane.showMessageDialog(null,"El id de usuario ya esta ocupado","Error",JOptionPane.QUESTION_MESSAGE);        
+    nombre.setEnabled(true);
+                    aPaterno.setEnabled(true);
+                    aMaterno.setEnabled(true);
+                    cal.setEnabled(true);
+                    colo.setEnabled(true);
+                    numero.setEnabled(true);
+                    id.setEnabled(true);
+                    email.setEnabled(true);
+                    con.setEnabled(true);
     }
     else{
         JOptionPane.showMessageDialog(null,"Datos guardados");                

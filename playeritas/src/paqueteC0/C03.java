@@ -288,7 +288,8 @@ public class C03 extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e1){
                 try {                                        
-                    sql.C03(frame,n,idP,ap,am,c,co,num,m, pas);
+                    sql.C03(frame,n,idP,ap,am,c,co,num,m, pas,nombre,aPaterno
+                            ,aMaterno,calle,col,numero,id,mail,con);                                        
                     j.dispose();
                     
                 } catch (SQLException ex) {
