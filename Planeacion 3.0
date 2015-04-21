@@ -38,37 +38,37 @@ C01. Sistema da Inicio sesión: 4 días. Entrega 28 de marzo
 C02. Vendedor Consulta datos del cliente: 6 días hábiles. Entrega 31 de marzo
 C03. Vendedor Registra clientes: 7 días hábiles. Entrega 8 de abril
 C04. Vendedor Da de baja clientes: 7 días hábiles. Entrega 8 de abril
-C05. Vendedor Genera pedido de cliente: 8 días hábiles. Entrega 17 de abril
-C06. Vendedor Cancela pedidos de clientes: 7 días hábiles. Entrega 16 de abril
-C07. Vendedor Modifica clientes: 6 días hábiles. Entrega 23 de abril
-C08. Vendedor Recibe pedidos de distribuidor: 9 días hábiles. Entrega 28 de abril
-C09. Vendedor Consulta pedidos de cliente: 8 días hábiles. Entrega 7 de mayo 
-C10. Gerente Registra empleados: 6 días hábiles. Entrega 14 de mayo
-C11. Gerente Da de alta a empleados: 6 días hábiles. Entrega 21 de mayo
-C12. Gerente Da de baja a empleados: 6 días hábiles. Entrega 21 de mayo
-C13. Gerente Registra sueldo de personal: 5 días hábiles. Entrega 27 de mayo
-C14. Gerente Registra proveedores: 8 días hábiles. Entrega 5 de junio
-C15. Gerente Recibe reportes (ventas, quejas, sugerencias de todos): 15 días hábiles. Entrega 23 de junio
-C16. Gerente Genera nomina: 10 días hábiles. Entrega 17 de junio
-C17. Gerente Cancela pedidos de distribuidor: 6 días hábiles. Entrega 24 de junio
-C18. Gerente Hace pedidos al distribuidor: 12 días hábiles. Entrega 8 de julio
-C19. Gerente Recibe pago con tarjeta de crédito: 10 días hábiles. Entrega 4 de julio
-C20. Gerente Recibe pago con tarjeta debito: 8 días hábiles. Entrega 14 de julio
-C21. Gerente Recibe pago en efectivo: 8 días hábiles. Entrega 23 de julio
-C22. Gerente Genera facturas: 10 días hábiles. Entrega 4 de agosto
-C23. Gerente Genera reporte de gastos: 13 días hábiles. Entrega 19 de agosto
+C05. Vendedor Genera pedido de cliente: 8 días hábiles. Entrega 24 de abril
+C06. Vendedor Cancela pedidos de clientes: 7 días hábiles. Entrega 23 de abril
+C07. Vendedor Modifica clientes: 6 días hábiles. Entrega 30 de abril
+C08. Vendedor Recibe pedidos de distribuidor: 9 días hábiles. Entrega 5 de mayo
+C09. Vendedor Consulta pedidos de cliente: 8 días hábiles. Entrega 14 de mayo 
+C10. Gerente Registra empleados: 6 días hábiles. Entrega 21 de mayo
+C11. Gerente Da de alta a empleados: 6 días hábiles. Entrega 28 de mayo
+C12. Gerente Da de baja a empleados: 6 días hábiles. Entrega 4 de mayo
+C13. Gerente Registra sueldo de personal: 5 días hábiles. Entrega 3 de junio
+C14. Gerente Registra proveedores: 8 días hábiles. Entrega 12 de junio
+C15. Gerente Recibe reportes (ventas, quejas, sugerencias de todos): 15 días hábiles. Entrega  30 de junio
+C16. Gerente Genera nomina: 10 días hábiles. Entrega 24 de junio
+C17. Gerente Cancela pedidos de distribuidor: 6 días hábiles. Entrega 1 de julio
+C18. Gerente Hace pedidos al distribuidor: 12 días hábiles. Entrega 15 de julio
+C19. Gerente Recibe pago con tarjeta de crédito: 10 días hábiles. Entrega 11 de julio
+C20. Gerente Recibe pago con tarjeta debito: 8 días hábiles. Entrega 30 de julio
+C21. Gerente Recibe pago en efectivo: 8 días hábiles. Entrega 8 de agosto
+C22. Gerente Genera facturas: 10 días hábiles. Entrega 20 de agosto
+C23. Gerente Genera reporte de gastos: 13 días hábiles. Entrega 4 de septiembre
 
 Aplicación web 
-B01. Cliente Inicia sesión: 6 días hábiles. Entrega 31 de marzo
-B02. Cliente Consulta catalogo/galería: 17 días hábiles. Entrega 20 de abril
-B03. Cliente Agrega productos al carrito: 12 días hábiles. Entrega 4 de mayo
-B04. Cliente Consulta carrito: 9 días hábiles. Entrega 14 de mayo
-B05. Cliente Genera pedido: 9 días hábiles. Entrega 25 de mayo
-B06. Cliente Recibe número de pedido: 9 días hábiles. Entrega 4 de junio
-B07. Cliente Imprime factura: 10 días hábiles. Entrega 16 de junio
-B08. Cliente Consulta factura: 10 días hábiles. Entrega 27 de junio
-B09. Cliente Recupera contraseña: 10 días hábiles. Entrega 9 de julio
-B10. Cliente Se registra en sistema: 14 días hábiles. Entrega 25 de julio
+B01. Cliente Inicia sesión: 6 días hábiles. Entrega 7 mayo
+B02. Cliente Consulta catalogo/galería: 17 días hábiles. Entrega 27 de mayo
+B03. Cliente Agrega productos al carrito: 12 días hábiles. Entrega 11 de junio
+B04. Cliente Consulta carrito: 9 días hábiles. Entrega 22 de junio
+B05. Cliente Genera pedido: 9 días hábiles. Entrega de 2 de julio
+B06. Cliente Recibe número de pedido: 9 días hábiles. Entrega  13 de julio
+B07. Cliente Imprime factura: 10 días hábiles. Entrega 24 de julio
+B08. Cliente Consulta factura: 10 días hábiles. Entrega 4 de agosto
+B09. Cliente Recupera contraseña: 10 días hábiles. Entrega 15 de agosto
+B10. Cliente Se registra en sistema: 14 días hábiles. Entrega  1 de septiembre
 
 Revisiones
 R01 primera revisión 26 de marzo.
@@ -76,6 +76,7 @@ R02 segunda revisión 17 de abril.
 R03 tercera revisión 21 de mayo.
 R04 cuarta revisión 23 de junio
 R05 quinta revisión 20 de agosto
+Capacitación PHP de 13 de abril a 30 de abril
 
 
 El costo del proyecto será de 450 mil pesos m.n. en un tiempo total de 7 meses con 3 empleados. 
