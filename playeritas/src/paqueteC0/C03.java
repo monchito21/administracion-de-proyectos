@@ -258,7 +258,7 @@ public class C03 extends javax.swing.JFrame {
                     String pas=con.getText();
                     JFrame j = new JFrame();
         j.setTitle("Cliente nuevo");
-        j.setSize(320,400);
+        j.setSize(360,450);
         j.setLocation(600,100);
         j.setResizable(false);
         j.setLayout(new GridLayout(7,1));

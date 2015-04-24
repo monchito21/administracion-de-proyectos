@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,7 +30,7 @@ public  Statement conn() {
     
     //Aqui ponganle el puerto de su computadora para que funcione es que yo le puse el 9418
     
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum", "scrum");
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     //JOptionPane.showMessageDialog(null, "Conexion BD exitosa");
     return statement;
@@ -42,7 +43,7 @@ public  Statement conn() {
 }
 public void C01(int A1, int A2,JFrame frame) throws SQLException{    
     String consulta="select * from SCRUM.EMPLEADO,SCRUM.PERSONA where PERSONA_IDPERSONA= "+A1;    
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(consulta);
     if(rset.next()==true){
@@ -62,7 +63,7 @@ public void C01(int A1, int A2,JFrame frame) throws SQLException{
 public void C02(int m) throws SQLException{        
     String consulta="select * from SCRUM.PERSONA where IDPERSONA="+m;   
     String consulta2="select PERSONA_IDPERSONA from SCRUM.CLIENTE where PERSONA_IDPERSONA="+m;
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(consulta);                
         //ventana
@@ -111,7 +112,7 @@ public void C02(int m) throws SQLException{
 public void consulta(int id) throws SQLException{
     String c ="select * from SCRUM.PERSONA where IDPERSONA="+id;
     
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(c);
     if(rset.next()==true){
@@ -131,7 +132,7 @@ public void C03(JFrame f,String nom,int ID,String aP,
             + "NUMERO, COLONIA,CORREO ) VALUES ('"+ID+"','"+nom+"','"+aP+"','"+aM+"','"+calle+
             "','"+n+"','"+col+"','"+mail+"')";
     String inC = "INSERT INTO SCRUM.CLIENTE (PERSONA_IDPERSONA,PASSCLIENTE) VALUES ('"+ID+"','"+pass+"')";
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(c);
     if(rset.next()==true){
@@ -158,7 +159,7 @@ public void C04(int id) throws SQLException{
     String con2 ="select * from SCRUM.PERSONA where IDPERSONA="+id;
     String deleteC = "DELETE SCRUM.CLIENTE WHERE PERSONA_IDPERSONA ="+id;
     String deleteP = "DELETE SCRUM.PERSONA WHERE IDPERSONA ="+id;
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:9418:XE","scrum","scrum");
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(con);
     if(rset.next()==false){
@@ -177,7 +178,7 @@ public void C04(int id) throws SQLException{
                     String m=rset2.getString("CORREO");
                     JFrame j = new JFrame();
         j.setTitle("Cliente a eliminar");
-        j.setSize(320,400);
+        j.setSize(360,450);
         j.setLocation(600,100);
         j.setResizable(false);
         j.setLayout(new GridLayout(6,1));
@@ -224,5 +225,65 @@ public void C04(int id) throws SQLException{
     }
     }
 }
-
+public void tipoProducto(JComboBox tp) throws SQLException{
+    String con ="select * from SCRUM.TIPOPRODUCTO";
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(con);
+    
+    while(rset.next()){
+        tp.addItem(rset.getString("TIPO"));
+    }
+}
+public void C05(int Id,String tipo,int cantidad,String estado ) throws SQLException{
+    int idTipo=0;
+    String con = "select * from SCRUM.TIPOPRODUCTO where TIPO ="+tipo;
+    String con1 = "select * from SCRUM.PRODUCTO where TIPO ="+idTipo;        
+    String con2 ="select * from SCRUM.PERSONA where IDPERSONA="+Id;
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(con);
+    ResultSet rset3 = statement.executeQuery(con2);
+    if(rset.next()==true){
+        idTipo = Integer.parseInt(rset.getString("IDTIPO"));        
+        ResultSet rset2 = statement.executeQuery(con1);
+        if(rset2.next()==true &&rset3.next()==true){
+            double p =Integer.parseInt(rset2.getString("PRECIO"));
+            double pT =p*cantidad;
+            String nombre = rset3.getString("NOMPERSONA");
+        JFrame j = new JFrame();
+        j.setTitle("Pedido a registrar");
+        j.setSize(390,500);
+        j.setLocation(600,100);
+        j.setResizable(false);
+        j.setLayout(new GridLayout(7,1));
+        JLabel id1 = new JLabel("Nombre: "+nombre);
+        JLabel id2 = new JLabel("Producto: "+tipo);
+        JLabel id3 = new JLabel("Cantidad: "+cantidad);
+        JLabel id4 = new JLabel("Precio x Producto: "+p);
+        JLabel id5 = new JLabel("Precio total: "+pT);
+        JLabel id6 = new JLabel("Estado: "+estado);
+        JLabel id7 = new JLabel("Folio: ??");
+        
+        JPanel pan = new JPanel();
+        pan.setLayout(new FlowLayout(FlowLayout.CENTER));        
+        JLabel label = new JLabel("Registrar pedido");
+        JButton si = new JButton("Si");
+        JButton no = new JButton("No");
+        pan.add(label);
+        pan.add(si);
+        pan.add(no);
+        
+        j.add(pan);
+        j.add(id1);
+        j.add(id2);
+        j.add(id3);
+        j.add(id4);
+        j.add(id5);
+        j.add(id6);
+        j.add(id7);
+        j.setVisible(true);
+        }
+    }
+}
 }
