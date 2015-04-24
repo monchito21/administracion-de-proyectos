@@ -173,11 +173,17 @@ public void eventos(){
         @Override
         public void actionPerformed(ActionEvent e){
             int id = Integer.parseInt(idCli.getText());
-            String tipo = tiPro.getSelectedItem().toString();
+            int tipo = tiPro.getSelectedIndex()+1;
+            String tipoN= tiPro.getSelectedItem().toString();
             int c = Integer.parseInt(can.getValue().toString());
-            String estado = est.getSelectedItem().toString();
+            String estado = (String) est.getSelectedItem();
+            System.out.println(id);
+            System.out.println(tipo);
+            System.out.println(c);
+            System.out.println(estado);
+            System.out.println(tipoN);
             try {
-                sql.C05(id, tipo, c, estado);
+                sql.C05(id, tipo, c, estado,tipoN);
             } catch (SQLException ex) {
                 Logger.getLogger(C05.class.getName()).log(Level.SEVERE, null, ex);
             }

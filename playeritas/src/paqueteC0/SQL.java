@@ -235,39 +235,42 @@ public void tipoProducto(JComboBox tp) throws SQLException{
         tp.addItem(rset.getString("TIPO"));
     }
 }
-public void C05(int Id,String tipo,int cantidad,String estado ) throws SQLException{
-    int idTipo=0;
-    String con = "select * from SCRUM.TIPOPRODUCTO where TIPO ="+tipo;
-    String con1 = "select * from SCRUM.PRODUCTO where TIPO ="+idTipo;        
+public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom ) throws SQLException{
+    String con = "select * from SCRUM.PRODUCTO where TIPOPRODUCTO_IDTIPO ="+tipo;
     String con2 ="select * from SCRUM.PERSONA where IDPERSONA="+Id;
     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
-    ResultSet rset = statement.executeQuery(con);
-    ResultSet rset3 = statement.executeQuery(con2);
+    ResultSet rset = statement.executeQuery(con);    
     if(rset.next()==true){
-        idTipo = Integer.parseInt(rset.getString("IDTIPO"));        
-        ResultSet rset2 = statement.executeQuery(con1);
-        if(rset2.next()==true &&rset3.next()==true){
-            double p =Integer.parseInt(rset2.getString("PRECIO"));
+        double p =Integer.parseInt(rset.getString("PRECIO"));
+        System.out.println(p);
+        ResultSet rset3 = statement.executeQuery(con2);
+        if(rset3.next()==true){            
+            System.out.println(cantidad);            
             double pT =p*cantidad;
-            String nombre = rset3.getString("NOMPERSONA");
+            System.out.println(pT);
+            String n = rset3.getString("NOMPERSONA");
+            String aP=rset3.getString("APPERSONA");
+            String aM=rset3.getString("AMPERSONA");        
+            String nombre=n+" "+aP+" "+aM;
+            System.out.println(nombre);
         JFrame j = new JFrame();
         j.setTitle("Pedido a registrar");
         j.setSize(390,500);
         j.setLocation(600,100);
         j.setResizable(false);
-        j.setLayout(new GridLayout(7,1));
+        j.setLayout(new GridLayout(8,1));
         JLabel id1 = new JLabel("Nombre: "+nombre);
-        JLabel id2 = new JLabel("Producto: "+tipo);
-        JLabel id3 = new JLabel("Cantidad: "+cantidad);
-        JLabel id4 = new JLabel("Precio x Producto: "+p);
-        JLabel id5 = new JLabel("Precio total: "+pT);
+        JLabel id2 = new JLabel("Producto: "+tipoNom);
+        JLabel id3 = new JLabel("Cantidad: "+cantidad+" piezas");
+        JLabel id4 = new JLabel("Precio x Producto: $"+p);
+        JLabel id5 = new JLabel("Precio total: $"+pT);
         JLabel id6 = new JLabel("Estado: "+estado);
         JLabel id7 = new JLabel("Folio: ??");
         
         JPanel pan = new JPanel();
         pan.setLayout(new FlowLayout(FlowLayout.CENTER));        
-        JLabel label = new JLabel("Registrar pedido");
+        JLabel label = new JLabel("Registrar pedido: ");
         JButton si = new JButton("Si");
         JButton no = new JButton("No");
         pan.add(label);
