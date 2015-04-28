@@ -235,20 +235,25 @@ public void tipoProducto(JComboBox tp) throws SQLException{
         tp.addItem(rset.getString("TIPO"));
     }
 }
-public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom ) throws SQLException{
+public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom,String color ) throws SQLException{
     String con = "select * from SCRUM.PRODUCTO where TIPOPRODUCTO_IDTIPO ="+tipo;
     String con2 ="select * from SCRUM.PERSONA where IDPERSONA="+Id;
+    String conF="select max (FOLIOPEDIDO)from COMPRA";   
     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(con);    
     if(rset.next()==true){
-        double p =Integer.parseInt(rset.getString("PRECIO"));
-        System.out.println(p);
+        double p =Double.parseDouble(rset.getString("PRECIO"));
+        int idProducto= Integer.parseInt(rset.getString("IDPRODUCTO"));
+        ResultSet rsetF = statement.executeQuery(conF);    
+        rsetF.next();
+        int folio = rsetF.getInt(1)+1;
         ResultSet rset3 = statement.executeQuery(con2);
         if(rset3.next()==true){            
-            System.out.println(cantidad);            
             double pT =p*cantidad;
-            System.out.println(pT);
+            String pTotal= Double.toString(pT);
+            String precio= Double.toString(p);
+            String can= Integer.toString(cantidad);
             String n = rset3.getString("NOMPERSONA");
             String aP=rset3.getString("APPERSONA");
             String aM=rset3.getString("AMPERSONA");        
@@ -259,14 +264,15 @@ public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom ) thro
         j.setSize(390,500);
         j.setLocation(600,100);
         j.setResizable(false);
-        j.setLayout(new GridLayout(8,1));
+        j.setLayout(new GridLayout(9,1));
         JLabel id1 = new JLabel("Nombre: "+nombre);
         JLabel id2 = new JLabel("Producto: "+tipoNom);
+        JLabel id8 = new JLabel("Color: "+color);
         JLabel id3 = new JLabel("Cantidad: "+cantidad+" piezas");
         JLabel id4 = new JLabel("Precio x Producto: $"+p);
         JLabel id5 = new JLabel("Precio total: $"+pT);
         JLabel id6 = new JLabel("Estado: "+estado);
-        JLabel id7 = new JLabel("Folio: ??");
+        JLabel id7 = new JLabel("Folio: "+folio);
         
         JPanel pan = new JPanel();
         pan.setLayout(new FlowLayout(FlowLayout.CENTER));        
@@ -280,13 +286,54 @@ public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom ) thro
         j.add(pan);
         j.add(id1);
         j.add(id2);
+        j.add(id8);
         j.add(id3);
         j.add(id4);
         j.add(id5);
         j.add(id6);
         j.add(id7);
         j.setVisible(true);
-        }
+        si.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String inP = "INSERT INTO SCRUM.PEDIDO (FOLIO,PRODUCTO_IDPRODUCTO,CANTIDAD,PRECIOXPRODUCTO,PEDIDOCOL,PRECIOTOTAL,"
+                        + "TIPOPRODUCTO_IDTIPO) VALUES('"+folio+"','"+idProducto+"','"+can+"','"+precio+"','"+color+"','"+pT+"','"+tipo+"')";
+                String inE="INSERT INTO SCRUM.EDOCOMPRA (IDESTADO,ESTADO)VALUES ('"+folio+"','"+estado+"')";
+                String inC="INSERT INTO SCRUM.COMPRA (FOLIOPEDIDO,CLIENTE_PERSONA_IDPERSONA,"
+                        + "EDOCOMPRA_IDESTADO,PEDIDO_FOLIO,PRODUCTO_IDPRODUCTO)"
+                        + "VALUES ('"+folio+"','"+Id+"','"+folio+"','"+folio+"','"+idProducto+"')";
+                try {
+                    statement.executeUpdate(inP);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    statement.executeUpdate(inE);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    statement.executeUpdate(inC);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                /*System.out.println("Datos pedido: \nFolio: "+folio+"\nIdProducto: "+idProducto+"\nCantidad: "+can+"\nPrecio: "
+                        +precio+"\nPrecio total: "+pT+"\nColor: "+color+"\n"+ "Tipo: "+tipo);
+                System.out.println("\nDatos estado de compra\nId: "+folio+"\nEstado: "+estado);
+                System.out.println("\nFolio de pedido: "+folio+"\nId Cliente: "+Id+"\nId estado: "+folio+"\nFolio del pedido: "+folio
+                        +"\nId Producto:"+idProducto);*/
+                j.dispose();
+                
+            }
+        });
+        
+        no.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                j.dispose();
+            }
+        });
+        }        
     }
 }
 }
