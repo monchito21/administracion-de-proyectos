@@ -5,13 +5,16 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 public final class C05 extends javax.swing.JFrame {
 private SQL sql;
+private JFrame j;
     public C05() throws SQLException {
         initComponents();
         llenar();
-        eventos();
+        eventos();        
+        j= this;
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +52,7 @@ private SQL sql;
 
         jLabel5.setText("Estado de compra");
 
-        est.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Liquidado ", "por pagar", "abonado", "cancelado" }));
+        est.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Liquidado ", "por pagar", "abonado", " " }));
 
         crear.setText("Crear");
 
@@ -195,7 +198,7 @@ public void eventos(){
             String estado = (String) est.getSelectedItem();
             String col = (String) color.getSelectedItem();
             try {
-                sql.C05(id, tipo, c, estado,tipoN,col);
+                sql.C05(id, tipo, c, estado,tipoN,col,j);
             } catch (SQLException ex) {
                 Logger.getLogger(C05.class.getName()).log(Level.SEVERE, null, ex);
             }

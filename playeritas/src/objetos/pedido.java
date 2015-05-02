@@ -1,17 +1,40 @@
 package objetos;
 
 public class pedido {
+    private int folioPedido;
+    private int idEstado;
     private int folio;
-    private int cantidad;
-    private int precio;
-    private double total;    
-    private int  idTipo;
     private int idProducto;
     public pedido(){
         
     }
-    public void registra(){
-        
+
+    /**
+     * @return the folioPedido
+     */
+    public int getFolioPedido() {
+        return folioPedido;
+    }
+
+    /**
+     * @param folioPedido the folioPedido to set
+     */
+    public void setFolioPedido(int folioPedido) {
+        this.folioPedido = folioPedido;
+    }
+
+    /**
+     * @return the idEstado
+     */
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    /**
+     * @param idEstado the idEstado to set
+     */
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
     /**
@@ -29,62 +52,6 @@ public class pedido {
     }
 
     /**
-     * @return the cantidad
-     */
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    /**
-     * @param cantidad the cantidad to set
-     */
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    /**
-     * @return the precio
-     */
-    public int getPrecio() {
-        return precio;
-    }
-
-    /**
-     * @param precio the precio to set
-     */
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
-
-    /**
-     * @return the total
-     */
-    public double getTotal() {
-        return total;
-    }
-
-    /**
-     * @param total the total to set
-     */
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    /**
-     * @return the idTipo
-     */
-    public int getIdTipo() {
-        return idTipo;
-    }
-
-    /**
-     * @param idTipo the idTipo to set
-     */
-    public void setIdTipo(int idTipo) {
-        this.idTipo = idTipo;
-    }
-
-    /**
      * @return the idProducto
      */
     public int getIdProducto() {
@@ -97,4 +64,11 @@ public class pedido {
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
+    public void imprimir(){
+     System.out.println(getFolio());   
+     System.out.println(getFolioPedido());
+     System.out.println(getIdProducto());
+     System.out.println(getIdEstado());
+     System.out.println("------------------------------------");
+    }    
 }

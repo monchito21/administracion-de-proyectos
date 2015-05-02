@@ -8,10 +8,12 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import objetos.canPedido;
 
 public final class interfaz extends javax.swing.JFrame {
     private final SQL sql = new SQL();
-    private C05 nP;
+    private C05 nP;   
+    private canPedido pedidos;
     public interfaz(JFrame j,String n) {
         j.dispose();
         initComponents();
@@ -30,7 +32,7 @@ public final class interfaz extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nPedido = new javax.swing.JButton();
-        ePedido = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         registra = new javax.swing.JMenuItem();
@@ -61,12 +63,7 @@ public final class interfaz extends javax.swing.JFrame {
             }
         });
 
-        ePedido.setText("Eliminar");
-        ePedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ePedidoActionPerformed(evt);
-            }
-        });
+        cancelar.setText("Cancelar");
 
         jMenu2.setText("Clientes");
 
@@ -95,16 +92,14 @@ public final class interfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(ePedido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nPedido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(b)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(i, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,9 +124,9 @@ public final class interfaz extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(11, 11, 11)
                 .addComponent(nPedido)
-                .addGap(18, 18, 18)
-                .addComponent(ePedido)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(cancelar)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,10 +143,6 @@ public final class interfaz extends javax.swing.JFrame {
     private void nPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nPedidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nPedidoActionPerformed
-
-    private void ePedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ePedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ePedidoActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -184,7 +175,7 @@ public final class interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b;
     private javax.swing.JRadioButton c;
-    private javax.swing.JButton ePedido;
+    private javax.swing.JButton cancelar;
     private javax.swing.JMenuItem elimina;
     private javax.swing.JTextField i;
     private javax.swing.JLabel jLabel1;
@@ -256,6 +247,13 @@ public void eventos(){
              Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
          }
          nP.setVisible(true);
+     }
+ });
+ cancelar.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed(ActionEvent e){
+         pedidos = new canPedido();
+         pedidos.setVisible(true);
      }
  });
 }

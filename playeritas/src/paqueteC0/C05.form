@@ -150,7 +150,7 @@
             <StringItem index="0" value="Liquidado "/>
             <StringItem index="1" value="por pagar"/>
             <StringItem index="2" value="abonado"/>
-            <StringItem index="3" value="cancelado"/>
+            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
       </Properties>
