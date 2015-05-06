@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +27,7 @@ import objetos.pedido;
 public class SQL {
     private DefaultListModel modelo;
     private pedido pL = new pedido();
+    private int a;
     public SQL(){
     }
 public  Statement conn() {
@@ -378,4 +380,102 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
     }
     boton.setEnabled(true);
 }
+ public void C06(int id) throws SQLException{
+     int idP=0;
+     int idE=0;
+     int idC=0;
+     String con ="select * from SCRUM.COMPRA where FOLIOPEDIDO= "+id;    
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+     ResultSet rset = statement.executeQuery(con);
+     if(rset.next()){         
+         idE=Integer.parseInt(rset.getString("EDOCOMPRA_IDESTADO"));
+         idP=Integer.parseInt(rset.getString("PEDIDO_FOLIO"));
+        idC=Integer.parseInt(rset.getString("CLIENTE_PERSONA_IDPERSONA"));
+        String c ="select * from SCRUM.PERSONA where IDPERSONA= "+idC;
+        String con1 ="select * from SCRUM.PEDIDO where FOLIO= "+idP;
+        String con2 ="select * from SCRUM.EDOCOMPRA where IDESTADO= "+idE;     
+        a=idE;
+         rset = statement.executeQuery(c);
+         rset.next();   
+         String nombre=rset.getString("NOMPERSONA")+" "+rset.getString("APPERSONA")+" "+rset.getString("AMPERSONA");
+         rset = statement.executeQuery(con1);
+         rset.next();
+         int idTP=Integer.parseInt(rset.getString("TIPOPRODUCTO_IDTIPO"));         
+         String color=rset.getString("PEDIDOCOL");
+         String cantidad=rset.getString("CANTIDAD");
+         String p=rset.getString("PRECIOXPRODUCTO");
+         String pT=rset.getString("PRECIOTOTAL");
+         String con3="select * from SCRUM.TIPOPRODUCTO where IDTIPO= "+idTP;
+         rset = statement.executeQuery(con3);
+         rset.next();
+         String tipoNom=rset.getString("TIPO");                           
+         rset = statement.executeQuery(con2);
+         rset.next();         
+         String estado=rset.getString("ESTADO");         
+         JFrame j = new JFrame();
+        j.setTitle("Pedido a cancelar");
+        j.setSize(390,500);
+        j.setLocation(600,100);
+        j.setResizable(false);
+        j.setLayout(new GridLayout(9,1));
+        JLabel id1 = new JLabel("Nombre: "+nombre);
+        JLabel id2 = new JLabel("Producto: "+tipoNom);
+        JLabel id8 = new JLabel("Color: "+color);
+        JLabel id3 = new JLabel("Cantidad: "+cantidad+" piezas");
+        JLabel id4 = new JLabel("Precio x Producto: $"+p);
+        JLabel id5 = new JLabel("Precio total: $"+pT);
+        JLabel id6 = new JLabel("Estado: "+estado);
+        JLabel id7 = new JLabel("Folio: "+id);
+        
+        JPanel pan = new JPanel();
+        pan.setLayout(new FlowLayout(FlowLayout.CENTER));        
+        JLabel label = new JLabel("Cancelar pedido: ");
+        JButton si = new JButton("Si");
+        JButton no = new JButton("No");
+        pan.add(label);
+        pan.add(si);
+        pan.add(no);
+        
+        j.add(pan);
+        j.add(id1);
+        j.add(id2);
+        j.add(id8);
+        j.add(id3);
+        j.add(id4);
+        j.add(id5);
+        j.add(id6);
+        j.add(id7);
+        j.setVisible(true);       
+        rset.close();
+        si.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){                                             
+                String query="update EDOCOMPRA set ESTADO=? where IDESTADO=?";
+                try {
+                    try (PreparedStatement m = connection.prepareStatement(query)) {
+                        m.setString(1,"Cancelado");
+                        m.setInt(2,a);
+                        m.executeUpdate();
+                        JOptionPane.showMessageDialog(null,"Pedido cancelado");
+                        j.dispose();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        });
+        no.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                j.dispose();
+            }
+        });
+     }
+     else{
+         JOptionPane.showMessageDialog(null,"No se encontro el pedido");
+     }    
+ }
+
 }

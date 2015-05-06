@@ -8,12 +8,12 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import objetos.canPedido;
+import objetos.C09;
 
 public final class interfaz extends javax.swing.JFrame {
     private final SQL sql = new SQL();
     private C05 nP;   
-    private canPedido pedidos;
+    //private C09 pedidos;
     public interfaz(JFrame j,String n) {
         j.dispose();
         initComponents();
@@ -252,8 +252,12 @@ public void eventos(){
  cancelar.addActionListener(new ActionListener(){
      @Override
      public void actionPerformed(ActionEvent e){
-         pedidos = new canPedido();
-         pedidos.setVisible(true);
+      int id=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el Folio de Pedido"));
+         try {
+             sql.C06(id);
+         } catch (SQLException ex) {
+             Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
+         }
      }
  });
 }
