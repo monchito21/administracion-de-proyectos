@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import objetos.pedido;
 
@@ -477,5 +478,27 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
          JOptionPane.showMessageDialog(null,"No se encontro el pedido");
      }    
  }
-
+ public void C07B(JTextArea a,int id,JButton m) throws SQLException{
+     String con = "select * from SCRUM.CLIENTE where PERSONA_IDPERSONA="+id;
+     String con2 = "select * from SCRUM.PERSONA where IDPERSONA="+id;
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+     ResultSet rset = statement.executeQuery(con);
+     if(rset.next()==true){
+         String pass = rset.getString("PASSCLIENTE");
+         rset = statement.executeQuery(con2);
+         rset.next();
+         a.setText("");
+         a.setText("Nombre: "+rset.getString("NOMPERSONA")+" "+rset.getString("APPERSONA")+" "+rset.getString("AMPERSONA")
+         +"\nCalle: "+rset.getString("CALLE")+"\nNumero: "+rset.getString("NUMERO")+"\nColonia: "+rset.getString("COLONIA")
+         +"\nCorreo: "+rset.getString("CORREO")+"\nId: "+rset.getString("IDPERSONA")+"\nContraseña: "+pass);                  
+         m.setEnabled(true);
+         rset.close();
+     }
+     else{
+         JOptionPane.showMessageDialog(null,"No se encontro el cliente","Error",JOptionPane.ERROR_MESSAGE);
+     }
+ }
+ public void C07(int id){
+ }
 }

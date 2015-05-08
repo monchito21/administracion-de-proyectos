@@ -36,6 +36,7 @@ public final class interfaz extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         registra = new javax.swing.JMenuItem();
+        modifica = new javax.swing.JMenuItem();
         elimina = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,6 +76,10 @@ public final class interfaz extends javax.swing.JFrame {
             }
         });
         jMenu2.add(registra);
+
+        modifica.setText("Modifica");
+        modifica.setToolTipText("Modifica datos de cliente");
+        jMenu2.add(modifica);
 
         elimina.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         elimina.setText("Elimina");
@@ -182,6 +187,7 @@ public final class interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem modifica;
     private javax.swing.JButton nPedido;
     private javax.swing.JLabel nombre;
     private javax.swing.JMenuItem registra;
@@ -219,6 +225,13 @@ public void eventos(){
      public void actionPerformed(ActionEvent e){
          C03 r = new C03();
          r.setVisible(true);
+     }
+ });
+ modifica.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed(ActionEvent e){
+         C07 m = new C07();
+         m.setVisible(true);
      }
  });
  elimina.addActionListener(new ActionListener(){
