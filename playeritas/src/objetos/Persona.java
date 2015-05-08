@@ -1,7 +1,7 @@
 package objetos;
 
 public  abstract class Persona {
-    private double id;
+    private int id;
     private String nombre;
     private String aP;
     private String aM;
@@ -17,14 +17,14 @@ public  abstract class Persona {
     /**
      * @return the id
      */
-    public double getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

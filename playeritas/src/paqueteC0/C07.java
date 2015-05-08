@@ -14,14 +14,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import objetos.cliente;
 
 public class C07 extends JFrame{
     private JTextField id;
     private JButton b,m;
     private JTextArea a;
-    private int cliente;
-    private SQL sql;
+    private int i;
+    private final  cliente c;
+    private final SQL sql;
+    private C07M mo;
     public C07(){
+        c = new cliente();
         sql = new SQL();
         setResizable(false);
      setTitle("Modifica cliente");          
@@ -56,15 +60,15 @@ public class C07 extends JFrame{
             public void actionPerformed(ActionEvent e){
                 if(id.getText().equals("")){
                     JOptionPane.showMessageDialog(null,"No ha ingresado un id");
-                }else{                    
-                    cliente = Integer.parseInt(id.getText());
-                    System.out.println(cliente);
+                }else{             
+                    i = Integer.parseInt(id.getText());                    
                     try {
-                        sql.C07B(a,cliente,m);
+                        sql.C07B(a,c,m,i);
                     } catch (SQLException ex) {
                         Logger.getLogger(C07.class.getName()).log(Level.SEVERE, null, ex);
                     }                    
                 }
+                c.imprime();
             }
         });
     }
@@ -72,7 +76,8 @@ public class C07 extends JFrame{
         m.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                
+                mo = new C07M(c,m);
+                mo.setVisible(true);
             }
         });
     }

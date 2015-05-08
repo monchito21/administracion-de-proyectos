@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import objetos.cliente;
 import objetos.pedido;
 
 public class SQL {
@@ -478,7 +479,7 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
          JOptionPane.showMessageDialog(null,"No se encontro el pedido");
      }    
  }
- public void C07B(JTextArea a,int id,JButton m) throws SQLException{
+ public void C07B(JTextArea a,cliente c,JButton m,int id) throws SQLException{
      String con = "select * from SCRUM.CLIENTE where PERSONA_IDPERSONA="+id;
      String con2 = "select * from SCRUM.PERSONA where IDPERSONA="+id;
      Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
@@ -488,10 +489,26 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
          String pass = rset.getString("PASSCLIENTE");
          rset = statement.executeQuery(con2);
          rset.next();
+         String nom =rset.getString("NOMPERSONA");
+         String aP=rset.getString("APPERSONA");
+         String aM=rset.getString("AMPERSONA");
+         String cal=rset.getString("CALLE");
+         String no=rset.getString("NUMERO");
+         String col=rset.getString("COLONIA");
+         String mail=rset.getString("CORREO");         
          a.setText("");
-         a.setText("Nombre: "+rset.getString("NOMPERSONA")+" "+rset.getString("APPERSONA")+" "+rset.getString("AMPERSONA")
-         +"\nCalle: "+rset.getString("CALLE")+"\nNumero: "+rset.getString("NUMERO")+"\nColonia: "+rset.getString("COLONIA")
-         +"\nCorreo: "+rset.getString("CORREO")+"\nId: "+rset.getString("IDPERSONA")+"\nContraseña: "+pass);                  
+         a.setText("Nombre: "+nom+" "+aP+" "+aM+"\nCalle: "+cal+"\nNumero: "+no
+                 +"\nColonia: "+col+"\nCorreo: "+mail+"\nId: "+id+"\nContraseña: "+pass);                  
+         c.setNombre(nom);
+         c.setaP(aP);
+         c.setaM(aM);
+         c.setCalle(cal);
+         c.setNo(no);
+         c.setCol(col);
+         c.setCorreo(mail);
+         c.setId(id);
+         c.setPass(pass);
+         c.setIdCliente(id);
          m.setEnabled(true);
          rset.close();
      }
@@ -499,6 +516,47 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
          JOptionPane.showMessageDialog(null,"No se encontro el cliente","Error",JOptionPane.ERROR_MESSAGE);
      }
  }
- public void C07(int id){
+ public void C07(cliente c,JFrame j,JFrame frame,JButton b) throws SQLException{
+     
+     String con ="select * from SCRUM.CLIENTE where PERSONA_IDPERSONA= "+c.getIdCliente();    
+     String con1 ="select * from SCRUM.PERSONA where IDPERSONA= "+c.getIdCliente();    
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+     ResultSet rset = statement.executeQuery(con);
+     if(rset.next()){         
+         rset = statement.executeQuery(con1);
+         rset.next();
+         System.out.println("El cliente fue encontrado");
+         rset.close();         
+                String query1="update CLIENTE set PASSCLIENTE=? where PERSONA_IDPERSONA="+c.getIdCliente();
+                String sql="update PERSONA set NOMPERSONA=?,APPERSONA=?,AMPERSONA=?,CALLE=?,NUMERO=?,COLONIA=?,CORREO=?"
+                        + " where IDPERSONA="+c.getIdCliente();
+                //String sql = "INSERT INTO PERSONA VALUES (?,?,?,?,?,?,?,?)";
+                try {
+                    try (PreparedStatement m = connection.prepareStatement(query1)) {
+                        m.setString(1,c.getPass());
+                        m.executeUpdate();
+                        m.close();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(SQL.class.getName()).log(Level.SEVERE, null, ex);
+                }
+         try (PreparedStatement m = connection.prepareStatement(sql)) {
+             m.setString(1,c.getNombre());
+             m.setString(2,c.getaP());
+             m.setString(3,c.getaM());
+             m.setString(4,c.getCalle());
+             m.setString(5,c.getNo());
+             m.setString(6,c.getCol());
+             m.setString(7,c.getCorreo());
+             m.executeUpdate();
+             m.close();
+             
+         }
+                JOptionPane.showMessageDialog(null,"Los datos han sido moficifados");
+                j.dispose();
+                frame.dispose();
+                b.setEnabled(true);
+     }
  }
 }

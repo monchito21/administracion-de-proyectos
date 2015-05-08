@@ -1,7 +1,7 @@
 package objetos;
 
 public class cliente extends Persona{
-    private double idCliente;
+    private int idCliente;
     private String pass;
     public cliente(){
     }
@@ -9,14 +9,14 @@ public class cliente extends Persona{
     /**
      * @return the idCliente
      */
-    public double getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
     /**
      * @param idCliente the idCliente to set
      */
-    public void setIdCliente(double idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -32,5 +32,16 @@ public class cliente extends Persona{
      */
     public void setPass(String pass) {
         this.pass = pass;
+    }
+    public void imprime(){
+        System.out.println(getNombre()+" "+getaP()+" "+getaM());
+        System.out.println(getId());
+        System.out.println(getPass());
+        System.out.println(getIdCliente());
+        System.out.println(getCalle());
+        System.out.println(getNo());        
+        System.out.println(getCol());
+        System.out.println(getCorreo());
+        System.out.println("----------------------------------------------------");
     }
 }
