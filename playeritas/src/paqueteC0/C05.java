@@ -15,6 +15,7 @@ private JFrame j;
         llenar();
         eventos();        
         j= this;
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")

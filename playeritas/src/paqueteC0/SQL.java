@@ -25,7 +25,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import objetos.cliente;
 import objetos.pedido;
-
+import objetos.producto;
 public class SQL {
     private DefaultListModel modelo;
     private pedido pL = new pedido();
@@ -251,8 +251,7 @@ public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom,String
     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
     Statement statement = connection.createStatement();
     ResultSet rset = statement.executeQuery(con);    
-    if(rset.next()==true){
-            
+    if(rset.next()==true){            
         double p =Double.parseDouble(rset.getString("PRECIO"));
         int idProducto= Integer.parseInt(rset.getString("IDPRODUCTO"));
         ResultSet rsetF = statement.executeQuery(conF);    
@@ -558,5 +557,28 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
                 frame.dispose();
                 b.setEnabled(true);
      }
+ }
+ public void idProducto(producto p) throws SQLException{
+     String con="select max (IDTIPO)from TIPOPRODUCTO";   
+     String con1="select max (IDPRODUCTO)from PRODUCTO";   
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(con);    
+    rset.next();
+    p.setIdTipo(rset.getInt(1)+1);       
+    rset = statement.executeQuery(con1);
+    rset.next();
+    p.setIdProducto(rset.getInt(1)+1);
+    rset.close();
+ }
+ public void rProducto(producto p) throws SQLException{
+     String con ="INSERT INTO TIPOPRODUCTO(IDTIPO,TIPO)VALUES ('"+p.getIdTipo()+"','"+p.getTipo()+"')";
+     String con1 ="INSERT INTO PRODUCTO(IDPRODUCTO,TIPOPRODUCTO_IDTIPO,PRECIO)VALUES ('"+p.getIdProducto()
+             +"','"+p.getIdTipo()+"','"+p.getPrecio()+"')";
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate(con);
+            statement.executeUpdate(con1);
+        }
  }
 }

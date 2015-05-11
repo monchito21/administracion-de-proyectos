@@ -38,6 +38,9 @@ public final class interfaz extends javax.swing.JFrame {
         registra = new javax.swing.JMenuItem();
         modifica = new javax.swing.JMenuItem();
         elimina = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        nS = new javax.swing.JMenuItem();
+        nProducto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +89,26 @@ public final class interfaz extends javax.swing.JFrame {
         jMenu2.add(elimina);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu1.setText("Almacen");
+
+        nS.setText("Nuevo suministro");
+        nS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nSActionPerformed(evt);
+            }
+        });
+        jMenu1.add(nS);
+
+        nProducto.setText("Nuevo producto");
+        nProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nProductoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(nProducto);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -149,6 +172,14 @@ public final class interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nPedidoActionPerformed
 
+    private void nSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nSActionPerformed
+
+    private void nProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nProductoActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -185,10 +216,13 @@ public final class interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField i;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem modifica;
     private javax.swing.JButton nPedido;
+    private javax.swing.JMenuItem nProducto;
+    private javax.swing.JMenuItem nS;
     private javax.swing.JLabel nombre;
     private javax.swing.JMenuItem registra;
     // End of variables declaration//GEN-END:variables
@@ -265,12 +299,21 @@ public void eventos(){
  cancelar.addActionListener(new ActionListener(){
      @Override
      public void actionPerformed(ActionEvent e){
-      int id=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el Folio de Pedido"));
+      int id=0;
+      id=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el Folio de Pedido"));
+      
          try {
              sql.C06(id);
          } catch (SQLException ex) {
              Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
-         }
+         }      
+     }
+ });
+ nProducto.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed(ActionEvent e){
+             C08P v = new C08P();
+             v.setVisible(true);
      }
  });
 }
