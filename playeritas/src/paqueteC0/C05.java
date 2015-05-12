@@ -53,7 +53,7 @@ private JFrame j;
 
         jLabel5.setText("Estado de compra");
 
-        est.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Liquidado ", "por pagar", "abonado", " " }));
+        est.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Liquidado ", "por pagar", "abonado" }));
 
         crear.setText("Crear");
 

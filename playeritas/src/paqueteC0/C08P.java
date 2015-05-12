@@ -16,6 +16,7 @@ public class C08P extends javax.swing.JFrame {
     public C08P(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         j= this;
+        setResizable(false);
         initComponents();
         registra();
     }
@@ -35,6 +36,13 @@ public class C08P extends javax.swing.JFrame {
         precio = new javax.swing.JSpinner();
         registra = new javax.swing.JButton();
         can = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        si = new javax.swing.JButton();
+        no = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,11 +57,35 @@ public class C08P extends javax.swing.JFrame {
             }
         });
 
-        precio.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, null, Float.valueOf(1.0f)));
+        precio.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), null, Float.valueOf(1.0f)));
 
         registra.setText("Registrar");
 
         can.setText("Cancelar");
+
+        jLabel3.setText("Nombre:");
+
+        jLabel4.setText("Precio:");
+
+        jLabel5.setText("Id Producto:");
+
+        jLabel6.setText("Id Tipo:");
+
+        si.setText("Si");
+        si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siActionPerformed(evt);
+            }
+        });
+
+        no.setText("No");
+        no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,19 +94,43 @@ public class C08P extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nom)
-                    .addComponent(precio))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(163, 163, 163))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(nom)
+                                            .addComponent(precio))
+                                        .addGap(52, 52, 52)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(no, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(33, 33, 33))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addComponent(registra)
-                .addGap(43, 43, 43)
+                .addGap(35, 35, 35)
                 .addComponent(can)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,16 +138,28 @@ public class C08P extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(si))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(no))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registra)
                     .addComponent(can))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -100,6 +168,14 @@ public class C08P extends javax.swing.JFrame {
     private void nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomActionPerformed
+
+    private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_siActionPerformed
+
+    private void noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,12 +216,21 @@ public class C08P extends javax.swing.JFrame {
     private javax.swing.JButton can;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton no;
     private javax.swing.JTextField nom;
     private javax.swing.JSpinner precio;
     private javax.swing.JButton registra;
+    private javax.swing.JButton si;
     // End of variables declaration//GEN-END:variables
 
     public void registra(){
+        si.setEnabled(false);
+        no.setEnabled(false);
         registra.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
@@ -158,11 +243,34 @@ public class C08P extends javax.swing.JFrame {
                         } catch (SQLException ex) {
                             Logger.getLogger(C08P.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                       si.setEnabled(true);
+                       no.setEnabled(true);
+                       registra.setEnabled(false);
+                       can.setEnabled(false);
+                       nom.setEnabled(false);
+                       precio.setEnabled(false);
+                       pr.imprime();
+                       jLabel3.setText("Nombre: "+pr.getTipo());
+                       jLabel4.setText("Precio: $"+pr.getPrecio());
+                       jLabel5.setText("Id Producto: "+pr.getIdProducto());
+                       jLabel6.setText("Id Tipo: "+pr.getIdTipo());
+                       jLabel7.setText("¿Estos son los datos que desea guardar?");
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Los datos no son validos","ERROR",JOptionPane.WARNING_MESSAGE);
                 }
-        pr.imprime();
+                }        
+        });
+        can.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                j.dispose();
+            }
+        });
+        si.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                
                     try {
                         sql.rProducto(pr);
                         JOptionPane.showMessageDialog(null,"Producto guardado");
@@ -170,12 +278,22 @@ public class C08P extends javax.swing.JFrame {
                     } catch (SQLException ex) {
                         Logger.getLogger(C08P.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }        
+            }
         });
-        can.addActionListener(new ActionListener(){
+        no.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                j.dispose();
+                si.setEnabled(false);
+                no.setEnabled(false);
+                registra.setEnabled(true);
+                can.setEnabled(true);
+                nom.setEnabled(true);
+                precio.setEnabled(true);
+                jLabel3.setText("Nombre: ");
+                       jLabel4.setText("Precio: $");
+                       jLabel5.setText("Id Producto: ");
+                       jLabel6.setText("Id Tipo: ");
+                       jLabel7.setText("");
             }
         });
     }    
