@@ -299,6 +299,12 @@ public class C07M extends javax.swing.JFrame {
         }
         
             }});
+        cancelar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.dispose();
+            }
+        });
     }
     
 }

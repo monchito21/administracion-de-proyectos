@@ -5,7 +5,7 @@ public class suministro {
     private String nomSuministro;
     private int idInventario;
     private int idEmpleado;
-    private String c;
+    private String cantidad;
     public suministro(){
         
     }
@@ -69,15 +69,19 @@ public class suministro {
     /**
      * @return the c
      */
-    public String getC() {
-        return c;
+    public String getCantidad() {
+        return cantidad;
     }
 
-    /**
-     * @param c the c to set
-     */
-    public void setC(String c) {
-        this.c = c;
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
     }
-    
+    public void imprime(){
+        System.out.println(getIdEmpleado());
+        System.out.println(getCantidad());
+        System.out.println(getIdInventario());
+        System.out.println(getIdSuministro());
+        System.out.println(getNomSuministro());
+        System.out.println("------------------------------------------------------");
+    }
 }

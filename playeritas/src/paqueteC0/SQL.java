@@ -24,8 +24,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import objetos.cliente;
+import objetos.empleado;
 import objetos.pedido;
 import objetos.producto;
+import objetos.suministro;
 public class SQL {
     private DefaultListModel modelo;
     private pedido pL = new pedido();
@@ -579,6 +581,54 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(con);
             statement.executeUpdate(con1);
+            statement.close();
+        }       
+ }
+ public int cEmpleado(empleado e,int i) throws SQLException{    
+    String consulta="select * from SCRUM.EMPLEADO where PERSONA_IDPERSONA= "+e.getId();    
+    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(consulta);
+    if(rset.next()==true){
+        if(Integer.parseInt(rset.getString("PASSEMPLEADO"))==e.getPass()){                     
+            i=1;
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Contraseña equivocada");
+            i=0;
+        }
+    }
+    else{
+        JOptionPane.showMessageDialog(null,"El usuario no existe","ERROR",JOptionPane.ERROR_MESSAGE);
+        i=0;
+    }
+    return i;
+}
+ public void idSuministro(suministro s,JButton si, JButton no,JTextArea a) throws SQLException{
+     String con="select max (IDSUMINISTRO)from SUMINISTRO";   
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+    Statement statement = connection.createStatement();
+    ResultSet rset = statement.executeQuery(con);    
+    si.setEnabled(true);
+    no.setEnabled(true);
+    rset.next();
+    s.setIdSuministro(rset.getInt(1)+1);
+    s.setIdInventario(rset.getInt(1)+1);
+    rset.close();
+    a.setText(" Id Empleado: "+s.getIdEmpleado()+"\n Nombre de suministro: "+s.getNomSuministro()+"\n Cantidad: "
+            +s.getCantidad()+"\n Id Inventario: "+s.getIdInventario()+"\n Id Suministro: "+s.getIdSuministro());
+ }
+ public void C08(suministro s,JFrame j) throws SQLException{
+     String con="INSERT INTO SUMINISTRO (IDSUMINISTRO,NOMSUMINISTRO) VALUES('"+s.getIdSuministro()+"','"+s.getNomSuministro()+"')";
+     String con1="INSERT INTO ALMACEN (IDINVENTARIO,EMPLEADO_PERSONA_IDPERSONA,SUMINISTRO_IDSUMINISTRO,CANTIDAD) VALUES"
+             + "('"+s.getIdInventario()+"','"+s.getIdEmpleado()+"','"+s.getIdSuministro()+"','"+s.getCantidad()+"')";
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate(con);
+            statement.executeUpdate(con1);
+            statement.close();
+            JOptionPane.showMessageDialog(null,"Suministro registrado");
+            j.dispose();
         }
  }
 }

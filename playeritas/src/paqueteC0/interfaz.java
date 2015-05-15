@@ -316,5 +316,12 @@ public void eventos(){
              v.setVisible(true);
      }
  });
+ nS.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed(ActionEvent e){
+             C08 v = new C08();
+             v.setVisible(true);
+     }
+ });
 }
 }
