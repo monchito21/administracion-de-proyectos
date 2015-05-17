@@ -30,7 +30,7 @@ import objetos.producto;
 import objetos.suministro;
 public class SQL {
     private DefaultListModel modelo;
-    private pedido pL = new pedido();
+    private pedido pL;
     private int a;
     public SQL(){
     }
@@ -352,37 +352,7 @@ public void C05(int Id,int tipo,int cantidad,String estado,String tipoNom,String
     }
     }
 }
-public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]arreglo) throws SQLException{    
-    int i=0;
-    modelo = new DefaultListModel();
-    String con ="select * from SCRUM.COMPRA where CLIENTE_PERSONA_IDPERSONA= "+id;
-    String c ="select * from SCRUM.PERSONA where IDPERSONA= "+id;
-    Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
-    Statement statement = connection.createStatement();
-    ResultSet rset = statement.executeQuery(con);
-    if(rset.next()){
-    while(rset.next()!=false){       
-        pL.setFolioPedido(Integer.parseInt(rset.getString("FOLIOPEDIDO")));
-        pL.setIdEstado(Integer.parseInt(rset.getString("EDOCOMPRA_IDESTADO")));
-        pL.setIdProducto(Integer.parseInt(rset.getString("PRODUCTO_IDPRODUCTO")));
-        pL.setFolio(Integer.parseInt(rset.getString("PEDIDO_FOLIO")));
-        modelo.addElement(pL.getFolio());
-        arreglo[i]=pL;
-        i++;
-    }
-    lista.setModel(modelo);
-    //scroll.add(lista);
-    lista.setEnabled(true);
-    rset = statement.executeQuery(c);
-    rset.next();
-    l.setText("No. de pedidos de: "+rset.getString("NOMPERSONA")+" "+
-            rset.getString("APPERSONA")+" "+rset.getString("AMPERSONA"));
-    }
-    else{
-        JOptionPane.showMessageDialog(null,"No existe el id");
-    }
-    boton.setEnabled(true);
-}
+
  public void C06(int id) throws SQLException{
      int idP=0;
      int idE=0;
@@ -630,5 +600,68 @@ public void pedidos(JList<pedido> lista,int id,JLabel l,JButton boton,pedido[]ar
             JOptionPane.showMessageDialog(null,"Suministro registrado");
             j.dispose();
         }
+ }
+ public boolean cCliente(int a,boolean b) throws SQLException{
+     String query ="SELECT *FROM SCRUM.CLIENTE WHERE PERSONA_IDPERSONA="+a;
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+     ResultSet rset = statement.executeQuery(query);
+     if(rset.next()){         
+         b=true;
+     }
+     else{
+         JOptionPane.showMessageDialog(null,"No existe un cliente con ese ID");
+         b=false;
+     }
+     return b;
+ }
+ public void cCompra(int a,pedido[]array) throws SQLException{
+     int i=0;
+     String query ="SELECT *FROM SCRUM.COMPRA WHERE CLIENTE_PERSONA_IDPERSONA="+a;
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+        try (ResultSet rset = statement.executeQuery(query)) {
+            while(rset.next()!=false){
+                pL = new pedido();
+                pL.setIdPersona(a);
+                pL.setFolio(Integer.parseInt(rset.getString("FOLIOPEDIDO")));
+                pL.setIdEstado(Integer.parseInt(rset.getString("EDOCOMPRA_IDESTADO")));
+                array[i]=pL;
+                i=i+1;
+            }  }
+ }
+ public pedido llenarPedido(pedido p) throws SQLException{
+     String query ="SELECT *FROM SCRUM.PEDIDO WHERE FOLIO="+p.getFolio();    
+     String query2 ="SELECT *FROM SCRUM.EDOCOMPRA WHERE IDESTADO="+p.getIdEstado();          
+     String query3 ="SELECT *FROM SCRUM.PERSONA WHERE IDPERSONA="+p.getIdPersona();     
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+     ResultSet rset = statement.executeQuery(query);
+     if(rset.next()){  
+         p.setIdTipo(Integer.parseInt(rset.getString("TIPOPRODUCTO_IDTIPO")));
+         p.setCantidad(rset.getString("CANTIDAD"));
+         p.setPxp(rset.getString("PRECIOXPRODUCTO"));
+         p.setColor(rset.getString("PEDIDOCOL"));
+         p.setpTotal(rset.getString("PRECIOTOTAL"));                  
+         rset = statement.executeQuery(query2);
+         rset.next();
+         p.setEstado(rset.getString("ESTADO"));
+         rset = statement.executeQuery(query3);
+         rset.next();
+         p.setCliente(rset.getString("NOMPERSONA")+" "+rset.getString("APPERSONA")+" "+rset.getString("AMPERSONA"));
+         rset.close();
+     }
+     return p;
+ }
+ public pedido idTipo(pedido p) throws SQLException{
+     String query ="SELECT *FROM SCRUM.TIPOPRODUCTO WHERE IDTIPO="+p.getIdTipo();
+     Connection  connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scrum", "scrum");
+     Statement statement = connection.createStatement();     
+     ResultSet rset = statement.executeQuery(query);
+     if(rset.next()){  
+         p.setTipo(rset.getString("TIPO"));
+         rset.close();
+     }
+     return p;
  }
 }
