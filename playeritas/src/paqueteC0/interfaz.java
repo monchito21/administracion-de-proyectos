@@ -9,8 +9,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import objetos.pedido;
 
 public final class interfaz extends javax.swing.JFrame {
@@ -181,11 +179,11 @@ public final class interfaz extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(21, 21, 21))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(consultar)
-                                        .addGap(70, 70, 70))))))))
+                                        .addGap(70, 70, 70))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap())))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +396,7 @@ public void eventos(){
  });
 }
 public void consultar(){
-    
+    mostrar.setEnabled(false);
     pedidos.setEnabled(false);
     consultar.addActionListener(new ActionListener(){
         @Override        
@@ -423,6 +421,7 @@ public void consultar(){
                         Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     if(ba==true){
+                        mostrar.setEnabled(ba);
                      try {
                          sql.cCompra(a, array);
                      } catch (SQLException ex) {
@@ -454,17 +453,40 @@ public void consultar(){
     mostrar.addActionListener(new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e){
-            int po =pedidos.getSelectedIndex();
-            try {
+            
+            int po =pedidos.getSelectedIndex();            
+            if(array[0]!=null ){
+                if(po<=0){
+                    po=0;
+            try {                
                 array[po]=sql.llenarPedido(array[po]);
                 array[po]=sql.idTipo(array[po]);
             } catch (SQLException ex) {
                 Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
-            }           
+            }    
+            
           pedido.setText("");
           pedido.setText(" Nombre: "+array[po].getCliente()+"\n Producto: "+array[po].getTipo()+"\n Cantidad: "+array[po].getCantidad()
           +"\n Precio x producto: $"+array[po].getPxp()+"\n Precio total: $"+array[po].getpTotal()+"\n Color: "+array[po].getColor()
           +"\n Estado: "+array[po].getEstado());
+        }
+                else{try {                
+                array[po]=sql.llenarPedido(array[po]);
+                array[po]=sql.idTipo(array[po]);
+            } catch (SQLException ex) {
+                Logger.getLogger(interfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }    
+            
+          pedido.setText("");
+          pedido.setText(" Nombre: "+array[po].getCliente()+"\n Producto: "+array[po].getTipo()+"\n Cantidad: "+array[po].getCantidad()
+          +"\n Precio x producto: $"+array[po].getPxp()+"\n Precio total: $"+array[po].getpTotal()+"\n Color: "+array[po].getColor()
+          +"\n Estado: "+array[po].getEstado());
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"No cuenta con pedidos el cliente");
+            }
+            System.out.println(po);
         }
     });
 }
