@@ -1,0 +1,54 @@
+.caja{
+		background: blue;
+		color:white;
+		float: left;
+		width: 150px;
+		height: 250px;
+		text-align: center;
+		border: 2px solid white;
+		border-radius: 10px;
+	}
+.contenedor{
+		background: darkblue;
+		width: 770px;
+		height: 508px;
+		margin: auto;
+}
+.cabezera{
+	background:green;
+	width:940;
+	height:20;
+	margin:auto;
+	color:white;
+	padding:8px;
+	border-radius:5px;
+	text-align:right;
+	font-size:16px;
+	font-family:arial;
+
+}
+.carrito{
+	float:right;
+}
+.cajaSola{
+	background: white;
+	float:left;
+	width: 250px;
+	height: 400px;
+	text-align: center;
+	border: 1px solid white;
+	border-radius: 10px;
+	font-family: arial;
+}
+.cajaDos{
+	background: white;
+	float: left;
+	width: 250px;
+	height: auto;
+	text-align: left;
+	border: 0px solid white;
+	border-radius: 10px;
+	padding: 15px;
+	font-family: arial;
+	font-size: 15px;
+}
