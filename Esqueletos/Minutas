@@ -1,0 +1,321 @@
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	02 de Marzo de 2015
+HORA: 	9:45 pm
+LUGAR:	En línea(Skype)
+MINUTA: 02
+
+Puntos a tratar:	Análisis de la base de datos y distribución commits
+
+Acuerdos:	
+•	Lectura analítica de la problemática para el 4 de marzo
+•	Obtención de elementos para tablas de la base de datos(entidades, atributos y relaciones) para el 5 de marzo
+•	Acordamos hacer commits basándonos en el modelo ágil distribuyéndolos en nuestros horarios disponibles marcando los días martes y jueves para subir los avances del proyecto de manera ordenada.
+
+Observaciones:	Retraso de reunión por condiciones externas, error en la conexión y registro de cuentas.
+
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés 
+---------------------------------------------------------
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	04 de Marzo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA: 03
+
+Puntos a tratar:	Análisis de la base de datos 
+Acuerdos:	
+•	Definición de entidades, atributos y relaciones
+•	Corroborar que el primer análisis no fuera deficiente
+•	Creación de diccionario de datos (1.0)
+
+Observaciones:	Retraso de reunión por condiciones escolares
+
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés 
+------------------------------------------------------
+FECHA:	09 de Marzo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	04
+
+Puntos a tratar:	Normalización
+
+Acuerdos:	
+•	Revisión de atributos (Multivalorados y atómicos)
+•	Cardinalidad
+•	Primera, segunda y tercera forma normal
+
+Observaciones:	Se agilizo la reunión y los acuerdos fueron más rápidos de establecer.
+
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+
+----------------------------------------------------
+
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	 16 de Marzo de 2015
+HORA: 	09:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	05
+
+Puntos a tratar:	Diseño y codificación de la base de datos, y red de actividades
+
+Acuerdos:	
+•	Se finalizó hoy el diseño de la base de datos y el siguiente paso es la codificación  a partir de la herramienta de workbench para generar el código, lo alteraremos para que se pueda usar en ORACLE. Esta codificación la hará Moisés y Carlos
+•	Hacer los puntos faltantes del plan para organizarnos mejor, la red de actividades, y la ruta crítica. Esta actividad la realizara Mario Alberto.
+
+Observaciones:	Se retrasó la reunión una hora por la falta de software de un equipo para realizar la reunión. Se solucionó utilizando otra herramienta distinta-
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+------------------------------------------------------------
+FECHA:	 18 de Marzo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	06
+
+Puntos a tratar:	Diseño y codificación de la base de datos, y red de actividades
+
+Acuerdos:	
+•	Se verificará que el código funcione correctamente en ORACLE. Moisés
+•	Se corroborará el plan de organización, la red de actividades, y la ruta crítica. Carlos y Mario.
+
+Observaciones:	
+Se retrasó la reunión una hora por la falta de software de un equipo para realizar la reunión. 
+
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+--------------------------------------------------------------
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	 23 de Marzo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	07
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	•	Se mostrara un avance del código en donde ya se puede conectar a la base de datos. Mario.
+•	Se terminarán las pruebas de la base de datos ingresando datos en cada tabla Moisés y Carlos.
+Observaciones:	Se retrasó el procesos de creación del inicio de sesión por falta de conectores a la base de datos 
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+
+----------------------------------------------------------------
+
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	 25 de Marzo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	08
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	•	Se comenzó a realizar las pruebas de inicio de sesión. Carlos
+•	Se comenzara el inicio de sesión de la aplicación web. Moisés.
+•	Se realizara un avance de consulta de cliente de la aplicación de escritorio. Mario
+Observaciones:	El avance del inicio de sesión se atrasó por la conexión a base de datos
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+
+
+------------------------------------------------------------
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	 30 de Marzo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	09
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	•	Tomar libres unos días como estrategia de eficiencia en el equipo. Todos
+•	Comenzar la conexión a la base de datos desde la aplicación de escritorio. Mario
+•	Comenzar la consulta de datos del cliente del vendedor. Carlos
+•	Terminar el inicio de sesión de la aplicación web. Moisés
+Observaciones:	El avance del inicio de sesión se atrasó por la conexión a base de datos.
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+-----------------------------------------------------------
+FECHA:	 08 de Abril de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	11
+
+Puntos a tratar:	Registro y baja de cliente
+Acuerdos:	
+•	Retomo de actividades. Todos
+•	Concluir la conexión a la base de datos desde la aplicación de escritorio. Mario
+•	Comenzar la consulta de datos del cliente del vendedor. Cocluir el C04 de baja de clientes. Carlos
+•	Terminar el inicio de sesión de la aplicación web. Moisés
+
+Observaciones:	Las actividades se retrasaron otro poco por qué acordamos estudiar para el examen. 
+
+Asistentes:
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+----------------------------------------------------------------
+
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	 13 de Abril de 2015
+HORA: 	10:30 pm
+LUGAR:	En línea(Skype)
+MINUTA:	12
+
+Puntos a tratar:	Renovación y Revisión
+Acuerdos:	
+•	Se renovara el calendario de actividades actualizándolo después de haber reconsiderado tiempos para actividades imprevistas.
+•	Se hará una capacitación para los miembros del equipo de php considerándola necesaria para un avance regular en la aplicación web.
+•	Se realizara una revisión de objetivos (C01, C02, etc.) para que los miembros del equipo estemos actualizados en todo el proyecto.
+Observaciones:	El periodo vacacional afecto la coordinación y sincronización del equipo.
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+------------------------------------------------------------------------------------
+FECHA:	15 de Abril de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	13
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	
+•	Se realizará un avance de  la actividad  C05 donde el vendedor genera el pedido del cliente. Mario.
+•	Se continuará con la capacitación de PHP. Moisés y Carlos.
+•	Se realizará la segunda revisión con el usuario(maestro) para juntar requerimientos del sistema web y la aplicación de escritorio. Todos
+Observaciones:	La capacitación para los integrantes de PHP es necesaria para crear la aplicación, por esto es que tomaremos un tiempo para familiarizarnos con el lenguaje mientras creamos la aplicación.
+Asistentes:
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+-----------------------------------------------------------------------------------------
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	20 de Abril de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	14
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	
+•	Seguiremos con el desarrollo de la aplicación de escritorio donde el vendedor genera pedidos. Mario
+•	Se hará un avance de la aplicación de escritorio donde el vendedor cancela pedidos. Carlos y Moisés
+•	Se seguirá con la capacitación de PHP. Moisés y Carlos
+•	Se realizará la segunda revisión con el usuario para pedirle requerimientos puesto que no se pudo llevar acabo en la fecha fijada. 
+•	Se instalará el software para seguir con el desarrollo en un nuevo equipo. Carlos
+Observaciones:	Al adquirir un nuevo equipo de cómputo se atrasó la reunión por la instalación del software necesario para realizarla, al tener el respaldo hecho se facilitó la restauración del equipo.
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+---------------------------------------------------------------------
+FECHA:	22 de Abril de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	15
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	•
+Seguiremos con el desarrollo de la aplicación de escritorio donde el vendedor genera pedidos para entregar el viernes 24 de abril . Mario
+•	Se hará un avance de la aplicación de escritorio donde el vendedor cancela pedidos para entregar el viernes 24 de abril. Carlos y Moisés
+•	Se seguirá con la capacitación de PHP. Moisés y Carlos
+•	Se realizará la segunda revisión con el usuario para pedirle requerimientos puesto que no se pudo llevar acabo en la fecha fijada y no se ha podido hacer. 
+Observaciones:	Los objetivos son casi iguales a los acordados anteriormente pero con fecha de entrega.
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+-------------------------------------------------------------------------------------------------
+
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	27 de Abril de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	16
+
+Puntos a tratar:	Inicio de sesión de la aplicación 
+Acuerdos:	•	Se terminó el punto C06 donde el vendedor cancela pedidos de clientes. Mario
+•	Se comenzara el punto C07 donde el Vendedor modifica datos del cliente. Mario
+•	Se concluirá la capacitación de PHP el 30 de abril. 
+Observaciones:	El subir esta minuta se retrasó porque el responsable (Moisés) tuvo asuntos personales el día de subirlo, martes 28, y después se pospuso por descuidar la importancia de la actividad. Por esta razón solo se realizó una evidencia de minuta en la semana. 
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+--------------------------------------------------------------
+Administración de proyectos
+FECHA:	04 de Mayo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	17
+
+Puntos a tratar:	Pre finalización del proyecto 
+Acuerdos:	
+•	Se habló sobre las dos últimas semanas antes de la entrega del proyecto, se delimitaron las metas a entregar al cliente. Todos
+•	Se realizara de la pantalla de inicio de sesión. Moisés y Carlos.
+•	Se concluirá la actividad C07. Mario
+Observaciones:	Se comienza la planificación del cierre del proyecto
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+------------------------------------------
+FECHA:	06 de Mayo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	18
+
+Puntos a tratar:	Pre finalización del proyecto 
+Acuerdos:	
+•	Se seguirá con el proceso de la pantalla de inicio de sesión. Moisés y Carlos.
+•	Se concluyó la actividad C06 y se terminará la actividad C07. Mario
+•	Se iniciara la actividad C08
+Observaciones:	El commit se atrasó por falta de organización causado por tutorías
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+--------------------------------------------------------------------------
+Minuta de Reunión sobre: Administración de proyectos
+FECHA:	11 de Mayo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	19
+
+Puntos a tratar:	Pre finalización del proyecto 
+Acuerdos:	•	Se finalizará la actividad C08 del calendario de actividades donde el vendedor recibe pedidos de distribuidor. Mario
+•	Se cambiara el servidor para la página web para conectar la base de datos con la aplicación en PHP. Moisés 
+•	Se ejecutará la evaluación al líder. Carlos
+Observaciones:	La minuta se llevó a cabo de manera efectiva sin retrasos
+Asistentes:	Mario Alberto
+Juan Carlos
+Moisés Cruz
+--------------------------------------------------------------------------
+FECHA:	13 de Mayo de 2015
+HORA: 	10:00 pm
+LUGAR:	En línea(Skype)
+MINUTA:	19
+
+Puntos a tratar:	Pre finalización del proyecto 
+Acuerdos:	
+•	Se finalizó la actividad C08 del proyecto. Mario
+•	Se buscara una solución para conectar PHP a ORACLE. Moisés 
+•	Se hará el documento con los estándares acordados por el equipo. Carlos
+Observaciones:	
+Asistentes:	
+Mario Alberto
+Juan Carlos
+Moisés Cruz
+
+
+
+
+
+
+
+
+
+
